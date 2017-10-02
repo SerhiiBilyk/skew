@@ -1,0 +1,19 @@
+{
+  "name": "skew",
+  "version": "1.0.0",
+  "description": "just simple RWD page",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SerhiiBilyk/skew.git"
+  },
+  "author": "SerhiiBilyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SerhiiBilyk/skew/issues"
+  },
+  "homepage": "https://github.com/SerhiiBilyk/skew#readme"
+}
