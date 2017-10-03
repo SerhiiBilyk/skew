@@ -2,9 +2,11 @@
   "name": "skew",
   "version": "1.0.0",
   "description": "just simple RWD page",
-  "main": "server.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack --env production",
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --content-base dist/ --env development\"  "
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,31 @@
   "bugs": {
     "url": "https://github.com/SerhiiBilyk/skew/issues"
   },
-  "homepage": "https://github.com/SerhiiBilyk/skew#readme"
+  "homepage": "https://github.com/SerhiiBilyk/skew#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-styled-components": "^1.2.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.4",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.12.1",
+    "postcss-load-config": "^1.2.0",
+    "postcss-loader": "^2.0.6",
+    "postcss-plugin": "^1.0.0",
+    "sass-loader": "^6.0.6",
+    "sass-resources-loader": "^1.3.1",
+    "style-loader": "^0.18.2",
+    "styled-components": "^2.2.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-hot-middleware": "^2.19.1"
+  }
 }
