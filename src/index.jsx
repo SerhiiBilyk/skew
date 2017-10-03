@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.scss';
-
-
+import Header from './components/header/header.jsx';
 
 function root(nodeID) {
   const element = document.createElement('div');
@@ -20,7 +19,9 @@ class App extends React.Component{
   }
   render(){
     return(
-      <div className="div">React</div>
+      <div>
+        <Header/>
+      </div>
     )
   }
 }

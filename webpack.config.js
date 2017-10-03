@@ -27,7 +27,8 @@ var commonConfig = {
           fallback:'style-loader',
           use:["css-loader","sass-loader",'postcss-loader']
         })
-      }, {
+      },
+       {
         test: /\.(js|jsx)$/,
         include: APP_DIR,
         use: {
@@ -40,6 +41,14 @@ var commonConfig = {
               ["babel-plugin-styled-components"]
             ]
           }
+        }
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        include: APP_DIR,
+        loader: 'url-loader',
+        options: {
+          limit: 125000
         }
       }
     ]
