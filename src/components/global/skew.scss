@@ -1,43 +1,17 @@
+
 .skew {
   position: relative;
   height: 0;
-  opacity: 0.5;
 
   &__rotate {
     width: 110%;
-    transform: rotate(-3deg);
+    transform: rotate(-3.5deg);
     border: 1px solid red;
-    height: 7vw;
-    top: -50px;
+    height: 6.7vw;
+    top:-3.4vw;
     position: absolute;
     left: -5%;
     background-color: white;
-  }
-}
-
-
-
-@media (max-width:320px) {
-  .skew{
-    &__rotate{
-      height:10vw;
-      top:-6vw;
-    }
-  }
-}
-@media (max-width:480px) {
-  .skew{
-    &__rotate{
-      height:10vw;
-      top:-3vw;
-    }
-  }
-}
-@media (max-width:480px) {
-  .skew{
-    &__rotate{
-      height:10vw;
-      top:-3vw;
-    }
+    transform-origin:top;
   }
 }

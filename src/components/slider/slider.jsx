@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navigation from '../navigation/navigation.jsx';
 import './slider.scss';
 
 var content = [
   {
     id: 1,
-    text: 'Fusce suscipit varius mi sed. Cum...'
+    text: ''
   }, {
     id: 2,
-    text: 'Aenean nonummy hendrerit mau phasellu porta....'
+    text: ''
   }, {
     id: 3,
-    text: 'Ut viverra mauris justo, quis auctor...'
+    text: ''
   }
 ]
 /**
@@ -26,7 +27,7 @@ function Button(props) {
     ? 'focus'
     : '';
   return (
-    <span>
+    <span className='slider__control--cell'>
       <button disabled={!!focus} className={`slider__button ${focus}`} onClick={(e) => changeSlide(slide)}></button>
     </span>
   )
@@ -38,14 +39,9 @@ function Button(props) {
  */
 function Slide(props) {
   var {active, previous} = props;
-  console.log('previous', previous)
-  var fadeOut = previous === true
-    ? 'fadeOut'
-    : '';
+  var fadeOut = previous ? 'fadeOut':'';
   return (
-    <li className={'slider__slide ' + (active === true
-      ? 'show'
-      : '') + (fadeOut) + ' x-' + props.index}>
+    <li className={'slider__slide ' + (active?'show': '') + (fadeOut) + ' x-' + (props.index + 1/*because SASS loop start from 1*/)}>
       <p>{props.content}</p>
     </li>
   )
@@ -106,10 +102,12 @@ class Slider extends React.Component {
 
     return (
       <div className="wrapper">
+        <Navigation/>
         <Slides content={content} current={this.state.current} previous={this.state.prev}/>
         <div className='slider__control'>
          {buttons}
        </div>
+
       </div>
     )
   }

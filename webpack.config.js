@@ -25,7 +25,7 @@ var commonConfig = {
         include: APP_DIR,
         use:ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:["css-loader","sass-loader",'postcss-loader']
+          use:["css-loader",'postcss-loader',"sass-loader"]
         })
       },
        {
@@ -46,10 +46,10 @@ var commonConfig = {
       {
         test: /\.(jpg|png|svg)$/,
         include: APP_DIR,
-        loader: 'url-loader',
-        options: {
-          limit: 125000
-        }
+        loader: 'file-loader'
+      },
+      {
+        
       }
     ]
   },

@@ -1,0 +1,13 @@
+@import '../../style/mixin.scss';
+
+
+@include media('zerro','md-tablet'){
+  .navigation {
+    &__items{
+      display:none;
+    }
+    &__bar{
+      text-align:right;
+    }
+  }
+}

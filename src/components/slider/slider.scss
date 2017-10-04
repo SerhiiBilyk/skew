@@ -17,12 +17,17 @@ $max-width: 900px;
 
   &__button {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
     cursor: pointer;
-    border: 1px solid black;
-    background-color: purple;
+    background-color: #494949;
+    border: none;
+
+    &:hover {
+      background-color: white;
+      cursor: pointer;
+    }
 
     &.focus {
       background-color: white;
@@ -40,21 +45,10 @@ $max-width: 900px;
     position: absolute;
     background-position: 50% 50%;
     background-size: cover;
-
-    &.x-0 {
-      background-image: url('./img/1.jpg');
-    }
-
-    &.x-1 {
-      background-image: url('./img/2.jpg');
-    }
-
-    &.x-2 {
-      background-image: url('./img/3.jpg');
-    }
-
-    &.x-3 {
-      background-image: url('./img/3.jpg');
+    @for $i from 1 through 3 {
+      &.x-#{$i} {
+        background-image: url('./img/#{$i}.jpg');
+      }
     }
 
     &.show {
@@ -71,19 +65,10 @@ $max-width: 900px;
     position: relative;
     z-index: 2;
     text-align: center;
-    bottom:80px;
-  }
-}
-@media (max-width:320px) {
-  .wrapper {
-    min-width: 320px;
-
-  }
-}
-@media (max-width:480px) {
-  .slider {
-    &__control{
-      display:none;
+    bottom: 8vw;
+    &--cell{
+      margin:0 5px;
     }
   }
 }
+@import './media.scss';

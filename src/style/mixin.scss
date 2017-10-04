@@ -1,0 +1,20 @@
+
+$breakpoints:(
+'zerro':0px,
+'sm-phone':320px,
+'md-phone':480px,
+'lg-phone':640px,
+
+'sm-tablet':768px,
+'md-tablet':1024px,
+
+'sm-pc':1280px,
+'md-pc':1690px,
+'lg-pc':1920px
+);
+
+@mixin media($min,$max){
+  @media (min-width:map-get($breakpoints,$min) + 1) and (max-width:map-get($breakpoints,$max)){
+    @content;
+  }
+}
