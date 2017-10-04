@@ -12,21 +12,14 @@ class Mobilemenu extends React.Component {
       return <li key={index} className="mobilemenu__item">{elem.name}</li>
     })
     var show=this.props.show;
-
-    var initial=1<<0;
-    var visible=2<<0;
-    var hidden=3<<0;
-
-    var display=(show)=>{
-      if(show===undefined){
-        return ''
-      }else if(show===true){
-        return 'show'
-      }else if(show===false){
-        return 'hide'
-      }
-
-    }
+console.log('show',show)
+/*
+toggling between 3 states:
+1.1 - initial
+0- expanded
+1 -collapsed
+ */
+    var display=(show)=>show>1?'':!show?'show':'hide';
     return (
       <ul className={`mobilemenu ${display(show)}`}>
         {items}

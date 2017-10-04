@@ -7,18 +7,10 @@ class Hamburger extends React.Component {
     super(props);
   }
   render() {
-    console.log('props', this.props)
-    var collapsed = this.props.collapsed;
-    var display=(collapsed)=>{
-      if(!collapsed){
-        return ''
-      }else if(collapsed){
-        return 'expanded'
-      }
-    }
+    console.log('sdf',this.props.collapsed)
     return (
       <ul id="hamburger"
-        className={`hamburger ${display(collapsed)}`}
+        className={`hamburger ${this.props.collapsed?'':'expanded'}`}
         onClick={(e) => this.props.change(e)}>
         <li></li>
         <li></li>

@@ -32,13 +32,13 @@ class Navigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: undefined
+      collapsed: 1.1/*initial state*/
     }
     this.changeState=this.changeState.bind(this)
   }
   changeState(e) {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: this.state.collapsed ^ 1,
     }, this.animation)
 
   }
