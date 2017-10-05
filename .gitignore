@@ -1,2 +1,4 @@
 node_modules/
-dist/**/*.*
+dist/app.js
+dist/style.css
+npm-debug.log.*
