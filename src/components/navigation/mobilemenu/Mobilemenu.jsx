@@ -22,6 +22,7 @@ toggling between 3 states:
 1 -collapsed
  */
     var display=(show)=>show>1?'':!show?'show':'hide';
+
     return (
       <ul className={css(styles.mobilemenu,styles[`${display(show)}`])}>
         {items}
