@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navigation from '../navigation/navigation.jsx';
-import './slider.scss';
+import {Navigation} from '../navigation/navigation.jsx';
+import styles from './slider.scss';
+import css from  '../global/cssmodules.js';
+
+console.log('styles',styles)
 
 var content = [
   {
@@ -27,8 +30,8 @@ function Button(props) {
     ? 'focus'
     : '';
   return (
-    <span className='slider__control--cell'>
-      <button disabled={!!focus} className={`slider__button ${focus}`} onClick={(e) => changeSlide(slide)}></button>
+    <span className={styles['control--cell']}>
+      <button disabled={!!focus} className={css(styles.button,styles[`${focus}`])} onClick={(e) => changeSlide(slide)}></button>
     </span>
   )
 }
@@ -41,7 +44,12 @@ function Slide(props) {
   var {active, previous} = props;
   var fadeOut = previous ? 'fadeOut':'';
   return (
-    <li className={'slider__slide ' + (active?'show': '') + (fadeOut) + ' x-' + (props.index + 1/*because SASS loop start from 1*/)}>
+    <li className={[
+      styles.slide,
+      styles[(active?'show': '')],
+      styles[fadeOut],
+      styles['x-'+(props.index + 1/*because SASS loop start from 1*/)]
+    ].join(' ')}>
       <p>{props.content}</p>
     </li>
   )
@@ -68,7 +76,7 @@ class Slides extends React.Component {
     })
 
     return (
-      <ul className="slider">
+      <ul className={styles.slider}>
         {slides}
       </ul>
     )
@@ -76,12 +84,11 @@ class Slides extends React.Component {
 
 }
 
-class Slider extends React.Component {
+export class Slider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       current: 0
-
     }
     this.changeSlide = this.changeSlide.bind(this);
     this.current = this.state.current;
@@ -101,10 +108,10 @@ class Slider extends React.Component {
     })
 
     return (
-      <div className="wrapper">
+      <div className={styles.wrapper}>
         <Navigation/>
         <Slides content={content} current={this.state.current} previous={this.state.prev}/>
-        <div className='slider__control'>
+        <div className={styles.control}>
          {buttons}
        </div>
 
@@ -112,4 +119,3 @@ class Slider extends React.Component {
     )
   }
 }
-export default Slider;

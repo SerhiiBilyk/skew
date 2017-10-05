@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.scss';
-import Header from './components/header/header.jsx';
+import {Header} from './components/header/header.jsx';
 
 function root(nodeID) {
   const element = document.createElement('div');

@@ -1,9 +1,9 @@
 @import '../../style/mixin.scss';
 
 @include media('zerro','md-phone'){
-  .slider {
-    &__control{
+
+    .control{
       display:none;
     }
-  }
+
 }

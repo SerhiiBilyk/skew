@@ -1,1 +1,12 @@
 @import './style/reset.scss';
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.test{
+  position:absolute;
+  width:100px;
+  height:100px;
+  color:red;
+  font-size:16px;
+}

@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './skew.scss';
-
-class Skew extends React.Component{
+import styles from './skew.scss';
+console.log('styles',styles)
+export class Skew extends React.Component{
   constructor(props){
     super(props);
   }
   render(){
     return(
-      <div className='skew'>
-        <div className='skew__rotate'></div>
+      <div className={styles.skew}>
+        <div className={styles['skew__rotate']}></div>
       </div>
     )
   }
 }
-export default Skew;

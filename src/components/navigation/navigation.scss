@@ -6,14 +6,15 @@
   padding-top: 70px;
   font-size: 0;
   margin: 0 auto;
+}
 
-  &__content {
+  .content {
     min-height: 30px;
     width: 80%;
     margin: 0 auto;
   }
 
-  &__logo {
+  .logo {
     width: 40%;
     float: left;
     border: 2px solid white;
@@ -21,7 +22,7 @@
     min-height: 30px;
   }
 
-  &__bar {
+  .bar {
     width: 60%;
     float: left;
     font-size: 0;
@@ -31,12 +32,12 @@
       color: white;
   }
 
-  &__items {
+  .items {
     display: table-cell;
     vertical-align: middle;
   }
 
-  &__item {
+  .item {
     float: left;
     width: 16.6666%;
     text-align: center;
@@ -44,5 +45,5 @@
     font-weight: 400;
     border:1px solid white;
   }
-}
+
 @import './media.scss';

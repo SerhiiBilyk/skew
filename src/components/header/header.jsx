@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slider from '../slider/slider.jsx';
-import Skew from './../global/skew.jsx';
+import {Slider} from '../slider/slider.jsx';
+import {Skew} from './../global/skew.jsx';
 
 
 
 
-class Header extends React.Component{
+export class Header extends React.Component{
   constructor(props){
     super(props);
   }
@@ -19,4 +19,3 @@ class Header extends React.Component{
     )
   }
 }
-export default Header;

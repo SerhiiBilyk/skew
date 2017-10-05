@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './navigation.scss';
+import styles from './navigation.scss';
 import img from './img/logo.png';
-import Hamburger from './hamburger.jsx';
-import Mobilemenu from './mobilemenu/Mobilemenu.jsx';
+import {Hamburger} from './hamburger.jsx';
+import {Mobilemenu} from './mobilemenu/Mobilemenu.jsx';
 import {bar} from './bar.jsx';
 
 
@@ -13,10 +13,10 @@ class Items extends React.Component {
   }
   render() {
     var items = bar.map(function(elem, index) {
-      return <li key={index} className="navigation__item">{elem.name}</li>
+      return <li key={index} className={styles.item}>{elem.name}</li>
     })
     return (
-      <ul className='navigation__items'>
+      <ul className={styles.items}>
         {items}
       </ul>
     )
@@ -24,11 +24,47 @@ class Items extends React.Component {
 }
 
 var Logo = (props) => (
-  <div className='navigation__logo'>
+  <div className={styles.logo}>
     <img src={props.img}/>
   </div>
 )
-class Navigation extends React.Component {
+class CreateContact extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            windowHeight: window.innerHeight,
+            windowWidth: window.innerWidth
+        };
+        this.handleResize=this.handleResize.bind(this)
+    }
+
+    handleResize(e) {
+        this.setState({
+        windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth
+        });
+        console.log('resize')
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize',this.handleResize)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize)
+    }
+
+    render() {
+
+        return (
+            <span className='test'>
+                {this.state.windowWidth} x {this.state.windowHeight}
+            </span>
+        );
+    }
+}
+export class Navigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,22 +84,22 @@ class Navigation extends React.Component {
   }
   render() {
     return (
-      <div className='navigation'>
-        <div className='navigation__content'>
+      <div className={styles.navigation}>
+        <div className={styles.content}>
           <Logo img={img}/>
-          <div className='navigation__bar'>
+          <div className={styles.bar}>
             <Items/>
             <Hamburger
               change={this.changeState}
               collapsed={this.state.collapsed}
             />
+
           </div>
 
         </div>
         <Mobilemenu show={this.state.collapsed} />
+          <CreateContact/>
       </div>
     )
   }
 }
-
-export default Navigation;

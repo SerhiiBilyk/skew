@@ -4,9 +4,24 @@
   "description": "just simple RWD page",
   "main": "./src/index.js",
   "scripts": {
-    "test": "jest",
+    "test": " jest",
     "build": "webpack --env production",
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --content-base dist/ --env development\"  "
+  },
+  "jest": {
+    "transform": {
+      "\\.js$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "./src/components/**/test/*.jsx",
+      "./src/components/*.test.jsx",
+      "!./src/components/**/*.scss",
+      "!./src/components/**/*.png",
+      "!./src/components/**/*.jpg"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -24,18 +39,23 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-styled-components": "^1.2.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-jest": "^21.2.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
     "postcss-load-config": "^1.2.0",
     "postcss-loader": "^2.0.6",
     "postcss-plugin": "^1.0.0",
+    "react-test-renderer": "^16.0.0",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "^1.3.1",
     "style-loader": "^0.18.2",

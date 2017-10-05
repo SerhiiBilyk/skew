@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './hamburger.scss';
-
-class Hamburger extends React.Component {
+import styles from './hamburger.scss';
+import css from  '../global/cssmodules.js';
+console.log('hamburger',styles)
+export class Hamburger extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -10,7 +11,11 @@ class Hamburger extends React.Component {
     console.log('sdf',this.props.collapsed)
     return (
       <ul id="hamburger"
-        className={`hamburger ${this.props.collapsed?'':'expanded'}`}
+        className={
+          css(
+            styles.hamburger,
+            styles[`${this.props.collapsed?'':'expanded'}`]
+          )}
         onClick={(e) => this.props.change(e)}>
         <li></li>
         <li></li>
@@ -19,4 +24,3 @@ class Hamburger extends React.Component {
     )
   }
 }
-export default Hamburger;
