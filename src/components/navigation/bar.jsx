@@ -1,11 +1,26 @@
-
 export var bar = [
   {
     name: 'Home'
   }, {
     name: 'About'
   }, {
-    name: 'Portfolio'
+    name: 'Portfolio',
+    sub: [
+      {
+        name: 'first'
+      }, {
+        name: 'first'
+      }, {
+        name: 'first'
+      }, {
+        name: 'first',
+        sub: [
+          {
+            name: 'second'
+          }
+        ]
+      }
+    ]
   }, {
     name: 'Blog'
   }, {
@@ -19,7 +34,12 @@ export var bar = [
         name: 'Options',
         sub: [
           {
-            name: 'General'
+            name: 'General',
+            sub: [
+              {
+                name: 'Kapitan'
+              }
+            ]
           }, {
             name: 'Sidebars'
           }, {

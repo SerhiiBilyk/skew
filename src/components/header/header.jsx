@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Slider} from '../slider/slider.jsx';
+import Slider from '../slider/slider.jsx';
 import {Skew} from './../global/skew.jsx';
 
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Navigation} from '../navigation/navigation.jsx';
+import Navigation from '../navigation/navigation.jsx';
 import styles from './slider.scss';
+import CSSModules from 'react-css-modules';
 import css from  '../global/cssmodules.js';
 
-console.log('styles',styles)
+
 
 var content = [
   {
@@ -119,3 +120,4 @@ export class Slider extends React.Component {
     )
   }
 }
+export default CSSModules(Slider,styles,{allowMultiple: true})

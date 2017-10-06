@@ -1,47 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CSSModules from 'react-css-modules';
 import styles from './navigation.scss';
 import img from './img/logo.png';
-import {Hamburger} from './hamburger/hamburger.jsx';
-import {Mobilemenu} from './mobilemenu/Mobilemenu.jsx';
-import {bar} from './bar.jsx';
-import css from  '../global/cssmodules.js';
+import MenuItems from './menu/menuItems.jsx';
+import Hamburger from './hamburger/hamburger.jsx';
+import Logo from './logo/logo.jsx';
+import css from '../global/cssmodules.js';
 
 
-function Items(props){
-  /**
-   * [foo description]
-   * @param  {JSON} arg JSON navigation content
-   * @param  {Number} [deep=0] nesting level of UL element
-   */
-  var listGenerator=(arg,deep=0)=>
-  /**
-   * if deep==0 it is mean that it is first UL element,
-   * and react will show him[styles.items]
-   * other sub-UL element will be hidden [styles.sub]*
-   */
-  <ul deep={deep}  className={deep?styles.sub:styles.items}>
-  {arg.map((elem,index)=>
-    /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
-  	elem.sub?
-  		<li key={index} className={css(styles.container,styles.item)} deep={deep}>{elem.name}{listGenerator(elem.sub,++deep)}</li>
-      /*if no react just return LI element*/
-  		:<li key={index} className={styles.item}>{elem.name}</li>
-  	)}
-  </ul>
-  return(
-    listGenerator(bar)
-  )
-}
+/*
+TODO
+# make content a little bit less, to 60%, also minify logo and bar
+# continue with menu in tablet mode
+# don't forget to use CSSModules
+ */
 
 
-var Logo = (props) => (
-  <div className={styles.logo}>
-    <img src={props.img}/>
-  </div>
-)
 
-export class Navigation extends React.Component {
+
+class Navigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,23 +45,22 @@ export class Navigation extends React.Component {
     /*Reset css classes in mobilemenu*/
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
-  animation() {
-    console.log('collapsed state:: ', this.state.collapsed)
-  }
+  animation() {}
   render() {
     return (
       <div className={styles.navigation}>
         <div className={styles.content}>
           <Logo img={img}/>
           <div className={styles.bar}>
-            <Items/>
+            <MenuItems theme='pc'/>
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
-
           </div>
-
         </div>
-        <Mobilemenu show={this.state.collapsed}/>
+        <div className={styles.mobile}>
+          <MenuItems show={this.state.collapsed} theme='mobile'/>
+        </div>
       </div>
     )
   }
 }
+export default CSSModules(Navigation,styles);
