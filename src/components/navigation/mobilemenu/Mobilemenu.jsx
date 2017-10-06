@@ -5,6 +5,23 @@ import {bar} from '../bar.jsx';
 import css from  '../../global/cssmodules.js';
 
 
+
+import TestRenderer from 'react-test-renderer';
+
+function Link(props) {
+  return <a href={props.page}>{props.children}</a>;
+}
+
+const testRenderer = TestRenderer.create(
+  <Link page="https://www.facebook.com/">Facebook</Link>
+);
+
+console.log(testRenderer.toJSON());
+// { type: 'a',
+//   props: { href: 'https://www.facebook.com/' },
+//   children: [ 'Facebook' ] }
+
+
 export class Mobilemenu extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +39,6 @@ toggling between 3 states:
 1 -collapsed
  */
     var display=(show)=>show>1?'':!show?'show':'hide';
-
     return (
       <ul className={css(styles.mobilemenu,styles[`${display(show)}`])}>
         {items}
