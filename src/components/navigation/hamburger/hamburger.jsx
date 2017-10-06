@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './hamburger.scss';
-import css from  '../global/cssmodules.js';
+import css from  '../../global/cssmodules.js';
 console.log('hamburger',styles)
 export class Hamburger extends React.Component {
   constructor(props) {

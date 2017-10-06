@@ -4,7 +4,7 @@
   "description": "just simple RWD page",
   "main": "./src/index.js",
   "scripts": {
-    "test": " jest",
+    "test": " jest --no-cache",
     "build": "webpack --env production",
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --content-base dist/ --env development\"  "
   },
@@ -50,6 +50,7 @@
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.1",
+    "jest-enzyme": "^4.0.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
     "postcss-load-config": "^1.2.0",
@@ -64,5 +65,8 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-hot-middleware": "^2.19.1"
+  },
+  "dependencies": {
+    "react": "^16.0.0"
   }
 }

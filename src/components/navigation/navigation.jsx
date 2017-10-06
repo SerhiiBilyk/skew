@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './navigation.scss';
 import img from './img/logo.png';
-import {Hamburger} from './hamburger.jsx';
+import {Hamburger} from './hamburger/hamburger.jsx';
 import {Mobilemenu} from './mobilemenu/Mobilemenu.jsx';
 import {bar} from './bar.jsx';
 import css from  '../global/cssmodules.js';
@@ -24,7 +24,7 @@ function Items(props){
   {arg.map((elem,index)=>
     /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
   	elem.sub?
-  		<li key={index} className={styles.subitem} deep={deep}>{elem.name}{listGenerator(elem.sub,++deep)}</li>
+  		<li key={index} className={css(styles.container,styles.item)} deep={deep}>{elem.name}{listGenerator(elem.sub,++deep)}</li>
       /*if no react just return LI element*/
   		:<li key={index} className={styles.item}>{elem.name}</li>
   	)}
