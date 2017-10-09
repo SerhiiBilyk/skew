@@ -26,3 +26,21 @@ $breakpoints:(
     clear: both;
   }
 }
+@mixin navigation-height-fix{
+  min-height: 30px;
+  font-size:20px;
+  font-weight: 400;
+  line-height:30px;
+  padding:15px 0;
+}
+@mixin linkReset($color) {
+  a {
+    &:active,
+    &:hover,
+    &:link,
+    &:visited {
+      color: $color;
+      text-decoration: none;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
 import {bar} from '../bar.jsx';
 import css from '../../global/cssmodules.js';
+import Link from '../../global/link/link.jsx';
 
 class MenuItems extends React.Component {
   constructor(props) {
@@ -18,6 +19,9 @@ class MenuItems extends React.Component {
    * other sub-UL element will be hidden [styles.sub]*
    *
     */
+   mouseEnter(e){
+     console.log('mouse enter',e.currentTarget)
+   }
   menuGenerator(arg, deep = -1) {
     ++deep
     var show = this.props.show;
@@ -34,14 +38,19 @@ class MenuItems extends React.Component {
         {arg.map((elem, index) =>
         /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
         elem.sub
-          ? <li key={index} styleName='container item' deep={deep}>{elem.name}{this.menuGenerator(elem.sub,deep)}</li>
+          ? <li key={index} styleName='container item' deep={deep} onMouseEnter={(e)=>this.mouseEnter(e)}>
+            <Link content={elem.name} to='/other'/>
+            {this.menuGenerator(elem.sub,deep)}
+          </li>
           /*if no react just return LI element*/
-          : <li key={index} styleName='item'>{elem.name}</li>)}
+          : <li key={index} styleName='item'>
+              <Link content={elem.name} to='/home'/>
+          </li>)}
       </ul>
     )
   }
   render() {
-    return (this.menuGenerator(bar))
+    return this.menuGenerator(bar)
   }
 }
 export default CSSModules(MenuItems, styles, {allowMultiple: true});

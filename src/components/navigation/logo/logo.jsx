@@ -4,8 +4,8 @@ import CSSModules from 'react-css-modules';
 import styles from './logo.scss';
 
 var Logo = (props) => (
-  <div styleName='logo'>
+  <div styleName='logo'>&nbsp;  
     <img src={props.img}/>
   </div>
 )
-export default CSSModules(Logo,styles);
+export default CSSModules(Logo,styles,{allowMultiple: true});

@@ -9,6 +9,7 @@ import Logo from './logo/logo.jsx';
 import css from '../global/cssmodules.js';
 
 
+
 /*
 TODO
 # make content a little bit less, to 60%, also minify logo and bar
@@ -45,7 +46,9 @@ class Navigation extends React.Component {
     /*Reset css classes in mobilemenu*/
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
-  animation() {}
+  animation() {
+    console.log('MenuItems',MenuItems)
+  }
   render() {
     return (
       <div className={styles.navigation}>

@@ -11,6 +11,8 @@ class Hamburger extends React.Component {
   render() {
     var hamburgerCSS='hamburger '+(this.props.collapsed?'':'expanded');
     return (
+      <div styleName='wrapper'>
+        <span styleName='height-fix'>&nbsp;</span>;
       <ul id="hamburger"
         styleName={hamburgerCSS}
         onClick={(e) => this.props.change(e)}>
@@ -18,6 +20,7 @@ class Hamburger extends React.Component {
         <li></li>
         <li></li>
       </ul>
+    </div>
     )
   }
 }
