@@ -5,6 +5,8 @@ import styles from './menuItems.scss';
 import {bar} from '../bar.jsx';
 import css from '../../global/cssmodules.js';
 import Link from '../../global/link/link.jsx';
+import ListContainer  from './ListContainer.jsx';
+import ListItem  from './ListItem.jsx';
 
 class MenuItems extends React.Component {
   constructor(props) {
@@ -34,19 +36,15 @@ class MenuItems extends React.Component {
     var display = (show) => show > 1 ? '' : !show ? 'show' : 'hide';
     var containerCSS = deep ? 'sub' : `items ${this.props.theme} ${display(show)}`;
     return (
-      <ul deep={deep} styleName={containerCSS}>
+        <ListContainer deep={deep} css={containerCSS}>
         {arg.map((elem, index) =>
         /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
         elem.sub
-          ? <li key={index} styleName='container item' deep={deep} onMouseEnter={(e)=>this.mouseEnter(e)}>
-            <Link content={elem.name} to='/other'/>
-            {this.menuGenerator(elem.sub,deep)}
-          </li>
+          ? <ListItem key={index} container deep={deep} content={this.menuGenerator(elem.sub,deep)} name={elem.name} />
           /*if no react just return LI element*/
-          : <li key={index} styleName='item'>
-              <Link content={elem.name} to='/home'/>
-          </li>)}
-      </ul>
+          : <ListItem key={index} name={elem.name} />
+        )}
+      </ListContainer>
     )
   }
   render() {

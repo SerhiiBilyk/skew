@@ -1,17 +1,86 @@
 .items {
   @include clearfix;
-  .link{
-  @include linkReset(black);
+
+  .link {
+    @include linkReset(black);
   }
 
-  &.pc {}
+  &.pc {
+    .container {
+      position: relative;
+
+      &:hover {
+        outline: 2px solid purple;
+
+        & > .sub{
+          display: block;
+          position: absolute;
+          width: 200%;
+          top: 100%;
+          left: -50%;
+
+
+    /*
+    first nested menu have special style
+     */
+          &[deep='1'] {
+            background-color: white;
+            position: absolute;
+            top: 100%;
+              @include clearfix;
+            &:after {
+              content: '';
+              position: absolute;
+              left: 50%;
+              top: -10px;
+              transform: translateX(-5px);
+              width: 0;
+              height: 0;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-bottom: 10px solid #e8e8e8;
+            }
+          }
+          $nested: '#FFFFFF','#0A4958','#F6E7D2';
+          @for $i from 2 through 3 {
+            .sub[deep='#{$i}'] {
+              left: -100%;
+              transform: translateX(-10px);
+              top: -15px;
+              width: 100%;
+              background-color: unquote(nth($nested,$i));
+              padding: 15px 0;
+              z-index:$i;
+
+
+              &:after {
+                content: '';
+                width: 10px;
+                border: 1px solid red;
+                right: -10px;
+                height: 100%;
+                top: 0;
+                position: absolute;
+              }
+            }
+          }
+
+          .item {
+            display: block;
+            float: none;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 
   &.mobile {
     font-size: 16px;
     position: relative;
     color: black;
     width: 100%;
-    z-index: -1;
+    z-index: 1;
     border: 1px solid white;
     display: none;
     height: 0;
@@ -70,69 +139,11 @@
 .sub {
   display: none;
 }
-
-.container[deep] {
-  position: relative;
-
-  &:hover {
-    outline: 2px solid purple;
-    & > .sub {
-      display: block;
-      position: absolute;
-      width: 200%;
-      top: 100%;
-      left: -50%;
-      &[deep]{
-        position:absolute;
-      }
-
-      &[deep='1'] {
-        background-color: white;
-        position: absolute;
-        top:100%;
-
-        &:after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: -10px;
-          transform:translateX(-5px);
-          width: 0;
-          height: 0;
-          border-left: 10px solid transparent;
-          border-right: 10px solid transparent;
-          border-bottom: 10px solid #e8e8e8;
-        }
-      }
-      $nested: '#FFFFFF','#0A4958','#F6E7D2';
-      @for $i from 2 through 3 {
-        .sub[deep='#{$i}'] {
-          left: -100%;
-          transform:translateX(-10px);
-          top: -15px;
-          width: 100%;
-          &:after{
-            content:'';
-            width:10px;
-            border:1px solid red;
-            right:-10px;
-            height:100%;
-            top:0;
-            position:absolute;
-          }
-          background-color: unquote(nth($nested,$i));
-          padding: 15px 0;
-        }
-      }
-      .item {
-        display: block;
-        float: none;
-        width: 100%;
-
-      }
-    }
-  }
+.sub{
+  @include clearfix;
 }
+
+
 
 .container[deep='0'],
 .item {
@@ -142,13 +153,34 @@
   display: block;
   @include navigation-height-fix;
 }
-@include media('zerro','md-tablet'){
-  .items {
-    &.pc {
-      display: none;
-    }
-    &.mobile {
+
+
+@include media ('zerro','md-tablet') {
+.pc {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+.container[deep] {
+  position: relative;
+
+
+
+
+  &.show {
+    & > .sub {
       display: block;
     }
   }
+
+  &.hide {
+    & > .sub {
+      display: none;
+    }
+  }
+}
+
 }
