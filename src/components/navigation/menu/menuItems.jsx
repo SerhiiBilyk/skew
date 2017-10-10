@@ -5,8 +5,8 @@ import styles from './menuItems.scss';
 import {bar} from '../bar.jsx';
 import css from '../../global/cssmodules.js';
 import Link from '../../global/link/link.jsx';
-import ListContainer  from './ListContainer.jsx';
-import ListItem  from './ListItem.jsx';
+import ListContainer from './ListContainer.jsx';
+import ListItem from './ListItem.jsx';
 
 class MenuItems extends React.Component {
   constructor(props) {
@@ -21,29 +21,37 @@ class MenuItems extends React.Component {
    * other sub-UL element will be hidden [styles.sub]*
    *
     */
-   mouseEnter(e){
-     console.log('mouse enter',e.currentTarget)
-   }
+  mouseEnter(e) {
+    console.log('mouse enter', e.currentTarget)
+  }
+
   menuGenerator(arg, deep = -1) {
-    ++deep
+    deep = deep + 1;
     var show = this.props.show;
+    var collapsed = this.props.collapsed;
     /*
       toggling between 3 states:
       1.1 - initial
       0- expanded
       1 -collapsed
        */
-    var display = (show) => show > 1 ? '' : !show ? 'show' : 'hide';
-    var containerCSS = deep ? 'sub' : `items ${this.props.theme} ${display(show)}`;
+    var display = (show) => show > 1
+      ? ''
+      : !show
+        ? 'show'
+        : 'hide';
+    var containerCSS = deep
+      ? 'sub'
+      : `items ${this.props.theme} ${display(show)}`;
+
     return (
-        <ListContainer deep={deep} css={containerCSS}>
+      <ListContainer deep={deep} css={containerCSS} collapsed={collapsed}>
         {arg.map((elem, index) =>
         /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
         elem.sub
-          ? <ListItem key={index} container deep={deep} content={this.menuGenerator(elem.sub,deep)} name={elem.name} />
+          ? <ListItem key={index} container deep={deep} content={this.menuGenerator(elem.sub, deep)} name={elem.name} collapsed={this.props.collapsed}/>
           /*if no react just return LI element*/
-          : <ListItem key={index} name={elem.name} />
-        )}
+          : <ListItem key={index} name={elem.name}/>)}
       </ListContainer>
     )
   }

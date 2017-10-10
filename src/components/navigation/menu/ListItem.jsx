@@ -3,38 +3,58 @@ import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
 import Link from '../../global/link/link.jsx';
+import Arrow from './Arrow.jsx';
 
-class ListItem extends React.Component{
-  constructor(props){
+
+class ListItem extends React.Component {
+  constructor(props) {
     super(props)
-    this.state={
-      deep:this.props.deep,
-      show:0
+    this.state = {
+      show: 1.1
     }
+
   }
-  increment(e){
-     e.stopPropagation();
+  /*
+  method is invoked before a mounted component receives new props
+  ...onResize this component receives every time other props from Navigation component,
+  if windowInnerWidth is >1024, it receives collapsed 1.1.
+  1.1. is the initial state(reset)
+   */
+  componentWillReceiveProps(nextProps) {
+    nextProps.collapsed === 1.1&& this.setState({show: this.props.collapsed})
+  }
+  increment(e) {
+    console.log('state', this.state.show)
+    e.stopPropagation();
     this.setState({
-      show:this.state.show ^ 1
+      show: this.state.show ^ 1
     })
   }
-  render(){
+  render() {
 
-
-const marker='marker';
-/*
+    const marker = 'marker';
+    /*
 show<-->hide css logic
  */
-var cssShow=this.state.show?'show':'hide';
-var container = this.props.container?'container '+cssShow:'';
-var css=container+' item';
-
-    return(
-      <li styleName={css} deep={this.props.deep} state={this.state.show} onClick={(e)=>this.increment(e)} >
-          <Link content={this.props.name} to='/home'/>
-          {this.props.content}
+    var display = (show) => show > 1
+      ? ''
+      : !show
+        ? 'show'
+        : 'hide';
+    var container = this.props.container
+      ? 'container ' + display(this.state.show)
+      : '';
+      var fa;
+      if(container){
+        fa=<Arrow direction={this.state.show} />
+      }
+    var css = container + ' item';
+    return (
+      <li styleName={css} deep={this.props.deep} state={this.state.show} onClick={(e) => this.increment(e)}>
+            {fa}
+        <Link content={this.props.name} to='/home'/> {this.props.content}
       </li>
     )
   }
 }
-export default CSSModules(ListItem,styles, {allowMultiple: true})
+export default CSSModules(ListItem, styles, {allowMultiple: true})

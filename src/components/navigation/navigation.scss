@@ -21,6 +21,11 @@
   font-size: 0;
   border: 2px solid white;
   color: white;
+  @include linkReset{
+    color:white;
+    text-decoration:none;
+  };
+
 
 }
 

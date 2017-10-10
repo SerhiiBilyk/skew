@@ -47,7 +47,10 @@ class Navigation extends React.Component {
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
   animation() {
-    console.log('MenuItems',MenuItems)
+
+  }
+  onClick(){
+    this.child.method()
   }
   render() {
     return (
@@ -55,12 +58,12 @@ class Navigation extends React.Component {
         <div className={styles.content}>
           <Logo img={img}/>
           <div className={styles.bar}>
-            <MenuItems theme='pc'/>
+            <MenuItems theme='pc' />
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
         </div>
         <div className={styles.mobile}>
-          <MenuItems show={this.state.collapsed} theme='mobile'/>
+          <MenuItems show={this.state.collapsed} theme='mobile' collapsed={this.state.collapsed}/>
         </div>
       </div>
     )

@@ -12,10 +12,8 @@ class ListContainer extends React.Component{
     }
   }
   render(){
-
-
     return(
-      <ul deep={this.props.deep} styleName={this.props.css} toggle={this.props.toggle}>
+      <ul deep={this.props.deep} styleName={this.props.css}>
         {this.props.children}
       </ul>
     )

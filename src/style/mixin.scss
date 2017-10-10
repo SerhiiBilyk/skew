@@ -33,14 +33,13 @@ $breakpoints:(
   line-height:30px;
   padding:15px 0;
 }
-@mixin linkReset($color) {
+@mixin linkReset {
   a {
     &:active,
     &:hover,
     &:link,
     &:visited {
-      color: $color;
-      text-decoration: none;
+      @content;
     }
   }
 }

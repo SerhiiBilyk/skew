@@ -10,8 +10,9 @@ class Link extends React.Component {
     super(props);
   }
   render() {
+  
     return (
-      <span styleName='wrapper'>
+      <span styleName='link' >
         <RouterLink to={this.props.to}>{this.props.content}</RouterLink>
       </span>
     )

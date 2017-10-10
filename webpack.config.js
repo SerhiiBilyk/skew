@@ -21,24 +21,23 @@ var commonConfig = {
         include: APP_DIR,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-            loader:"css-loader",
-            options:{
-              modules:true,
-              importLoaders: 3,
-              localIdentName: '[local]___[hash:base64:5]',
-              sourceMap:true
-            }
-          },
-          {
-            loader:"postcss-loader",
-            options:{
-              sourceMap: true
-            }
-          },
+          use: [
             {
-              loader:"sass-loader",
-              options:{
+              loader: "css-loader",
+              options: {
+                modules: true,
+                importLoaders: 3,
+                localIdentName: '[local]___[hash:base64:5]',
+                sourceMap: true
+              }
+            }, {
+              loader: "postcss-loader",
+              options: {
+                sourceMap: true
+              }
+            }, {
+              loader: "sass-loader",
+              options: {
                 sourceMap: true
               }
             }, {
@@ -61,15 +60,20 @@ var commonConfig = {
             presets: [
               'env', 'react'
             ],
-            plugins: [
-            ]
+            plugins: []
           }
         }
       }, {
         test: /\.(jpg|png|svg)$/,
         include: APP_DIR,
         loader: 'file-loader'
-      }, {}
+      }, {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      }, {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      }
     ]
   },
   plugins: [/*index.html generator*/
@@ -86,11 +90,9 @@ const developmentConfig = () => {
       host: process.env.HOST, // Defaults to `localhost`
       port: process.env.PORT, // Defaults to 8080
       contentBase: path.join(__dirname, './dist'),
-      hot:true
+      hot: true
     },
-    plugins:[
-       new webpack.HotModuleReplacementPlugin()
-    ]
+    plugins: [new webpack.HotModuleReplacementPlugin()]
   };
 
   return Object.assign({}, commonConfig, config);
