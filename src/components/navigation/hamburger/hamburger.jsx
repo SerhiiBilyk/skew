@@ -9,12 +9,11 @@ class Hamburger extends React.Component {
     super(props);
   }
   render() {
-    var hamburgerCSS='hamburger '+(this.props.collapsed?'':'expanded');
     return (
       <div styleName='wrapper'>
         <span styleName='height-fix'>&nbsp;</span>;
       <ul id="hamburger"
-        styleName={hamburgerCSS}
+        styleName={'hamburger '+(this.props.collapsed?'':'expanded')}
         onClick={(e) => this.props.change(e)}>
         <li></li>
         <li></li>

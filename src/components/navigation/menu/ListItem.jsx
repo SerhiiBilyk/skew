@@ -21,7 +21,11 @@ class ListItem extends React.Component {
   1.1. is the initial state(reset)
    */
   componentWillReceiveProps(nextProps) {
-    nextProps.collapsed === 1.1&& this.setState({show: this.props.collapsed})
+    /*
+     * change this line to : nextProps.collapsed ===1.1&& this.setState({show: 1.1})
+     * if you want to not collapse all sub menu when navigation resize handler trigger
+     * */
+    nextProps.collapsed !==0&& this.setState({show: 1.1})
   }
   increment(e) {
     console.log('state', this.state.show)
@@ -31,27 +35,14 @@ class ListItem extends React.Component {
     })
   }
   render() {
+    var display = (show) => show > 1 ? '' : !show ? 'show' : 'hide';
+    var container = this.props.container ? 'container ' + display(this.state.show) : '';
+    var fontAwesome=container ? <Arrow direction={this.state.show} />:'';
 
-    const marker = 'marker';
-    /*
-show<-->hide css logic
- */
-    var display = (show) => show > 1
-      ? ''
-      : !show
-        ? 'show'
-        : 'hide';
-    var container = this.props.container
-      ? 'container ' + display(this.state.show)
-      : '';
-      var fa;
-      if(container){
-        fa=<Arrow direction={this.state.show} />
-      }
     var css = container + ' item';
     return (
       <li styleName={css} deep={this.props.deep} state={this.state.show} onClick={(e) => this.increment(e)}>
-            {fa}
+        {fontAwesome}
         <Link content={this.props.name} to='/home'/> {this.props.content}
       </li>
     )

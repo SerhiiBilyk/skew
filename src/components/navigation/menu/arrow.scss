@@ -17,3 +17,8 @@
     transition:all 1s ease;
   color:red
 }
+@media(min-width:1025px){
+  .wrapper{
+    display:none;
+  }
+}

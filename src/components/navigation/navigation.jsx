@@ -40,17 +40,11 @@ class Navigation extends React.Component {
   changeState(e) {
     this.setState({
       collapsed: this.state.collapsed ^ 1
-    }, this.animation)
+    })
   }
   handleResize() {
     /*Reset css classes in mobilemenu*/
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
-  }
-  animation() {
-
-  }
-  onClick(){
-    this.child.method()
   }
   render() {
     return (

@@ -27,7 +27,6 @@ class MenuItems extends React.Component {
 
   menuGenerator(arg, deep = -1) {
     deep = deep + 1;
-    var show = this.props.show;
     var collapsed = this.props.collapsed;
     /*
       toggling between 3 states:
@@ -35,21 +34,21 @@ class MenuItems extends React.Component {
       0- expanded
       1 -collapsed
        */
-    var display = (show) => show > 1
-      ? ''
-      : !show
-        ? 'show'
-        : 'hide';
-    var containerCSS = deep
-      ? 'sub'
-      : `items ${this.props.theme} ${display(show)}`;
+    var display = (show) => show > 1 ? '': !show ? 'show': 'hide';
+    var containerCSS = deep ? 'sub': `items ${this.props.theme} ${display(collapsed)}`;
 
     return (
       <ListContainer deep={deep} css={containerCSS} collapsed={collapsed}>
         {arg.map((elem, index) =>
         /*if element contains 'sub' property, recursion goes deeper and each time increment deep indicator*/
         elem.sub
-          ? <ListItem key={index} container deep={deep} content={this.menuGenerator(elem.sub, deep)} name={elem.name} collapsed={this.props.collapsed}/>
+          ? <ListItem
+            key={index}
+            deep={deep}
+            content={this.menuGenerator(elem.sub, deep)}
+            name={elem.name}
+            collapsed={this.props.collapsed}
+            container/>
           /*if no react just return LI element*/
           : <ListItem key={index} name={elem.name}/>)}
       </ListContainer>

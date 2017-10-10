@@ -1,7 +1,4 @@
 $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
-.red{
-  color:red;
-}
 
 @keyframes anim {
   from {
@@ -27,9 +24,6 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 
 .items {
   @include clearfix;
-
-
-
   &.pc {
     .container {
       position: relative;
@@ -164,7 +158,8 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 
 
 
-@include media ('zerro','md-tablet') {.pc {
+@include media ('zerro','md-tablet') {
+  .pc {
   display: none;
 }
 

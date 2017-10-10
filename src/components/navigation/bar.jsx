@@ -17,7 +17,17 @@ export var bar = [
         sub: [
           {
             name: 'second'
-          }
+          },
+          {
+            name:'second',
+            sub:[
+              {name:'third'},
+              {name:'third',
+            sub:[
+              {name:'fourth'}
+            ]}
+            ]
+        }
         ]
       }
     ]
