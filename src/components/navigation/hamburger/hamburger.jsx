@@ -9,6 +9,10 @@ import PropTypes from 'prop-types';
 class Hamburger extends React.Component {
   constructor(props) {
     super(props);
+    this.clickHandler=this.clickHandler.bind(this)
+  }
+  clickHandler(e){
+    this.props.change(e)
   }
   render() {
 
@@ -17,7 +21,7 @@ class Hamburger extends React.Component {
         <span styleName='height-fix'>&nbsp;</span>;
       <ul id="hamburger"
         styleName={'hamburger '+(this.props.collapsed?'':'expanded')}
-        onClick={(e) => this.props.change(e)}>
+        onClick={(e) => this.clickHandler(e)}>
         <li></li>
         <li></li>
         <li></li>

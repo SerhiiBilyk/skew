@@ -25,17 +25,29 @@ var content = [
  * @param {boolean} focused button pressed, active
  * @param {integer} slide slide number
  */
-function Button(props) {
-  var {changeSlide, slide, focused} = props;
-  var focus = focused
-    ? 'focus'
-    : '';
-  return (
-    <span className={styles['control--cell']}>
-      <button disabled={!!focus} className={css(styles.button,styles[`${focus}`])} onClick={(e) => changeSlide(slide)}></button>
-    </span>
-  )
+
+export class Button extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  clickHandler(slide){
+    this.props.changeSlide(slide)
+  }
+  render(){
+    var {changeSlide, slide, focused} = this.props;
+    var focus = focused
+      ? 'focus'
+      : '';
+
+    return (
+      <span className={styles['control--cell']}>
+        <button disabled={!!focus} className={css(styles.button,styles[`${focus}`])} onClick={(e) =>{this.clickHandler(slide);}}></button>
+      </span>
+    )
+  }
 }
+
+
 /**
  * [Slide description]
  * @param  {boolean} active true if slide is active
@@ -95,6 +107,7 @@ export class Slider extends React.Component {
     this.current = this.state.current;
   }
   changeSlide(slideID) {
+
     this.setState({
       prev: this.state.current,
       current: slideID
@@ -113,9 +126,8 @@ export class Slider extends React.Component {
         <Navigation/>
         <Slides content={content} current={this.state.current} previous={this.state.prev}/>
         <div className={styles.control}>
-         {buttons}
+         {buttons}    
        </div>
-
       </div>
     )
   }
