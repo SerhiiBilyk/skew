@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import styles from './hamburger.scss';
 import CSSModules from 'react-css-modules';
 import css from  '../../global/cssmodules.js';
+import PropTypes from 'prop-types';
+
 
 class Hamburger extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
+
     return (
       <div styleName='wrapper'>
         <span styleName='height-fix'>&nbsp;</span>;
@@ -22,5 +25,9 @@ class Hamburger extends React.Component {
     </div>
     )
   }
+}
+Hamburger.propTypes={
+change:PropTypes.func.isRequired,
+collapsed:PropTypes.number.isRequired
 }
 export default CSSModules(Hamburger,styles,{allowMultiple:true})

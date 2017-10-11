@@ -10,11 +10,11 @@ class Arrow extends React.Component{
     super(props);
   }
   componentWillReceiveProps(nextProps) {
-  console.log('Arrow::nextProps::',nextProps)
+
   }
   render(){
     var direction=this.props.direction;
-    console.log('direction',direction)
+
     /*if direction==0 DOWN else UP*/
     var dir=(direction)=>!!direction?'down':'up';
 

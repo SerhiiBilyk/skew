@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
 import {bar} from '../bar.jsx';
@@ -11,7 +12,11 @@ import ListItem from './ListItem.jsx';
 class MenuItems extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      collapsed:undefined
+    }
   }
+
   /**
    * [foo description]
    * @param  {JSON} arg JSON navigation content
@@ -21,22 +26,15 @@ class MenuItems extends React.Component {
    * other sub-UL element will be hidden [styles.sub]*
    *
     */
-  mouseEnter(e) {
-    console.log('mouse enter', e.currentTarget)
-  }
 
   menuGenerator(arg, deep = -1) {
     deep = deep + 1;
-    var collapsed = this.props.collapsed;
+    var {collapsed,display,theme} = this.props;
+    var config={collapsed,display,deep};
     /*
-      toggling between 3 states:
-      1.1 - initial
-      0- expanded
-      1 -collapsed
-       */
-    var display = (show) => show > 1 ? '': !show ? 'show': 'hide';
-    var containerCSS = deep ? 'sub': `items ${this.props.theme} ${display(collapsed)}`;
-
+     * if deep > 0, set css class 'sub', in other case set theme of items and collapse logic
+     */
+    var containerCSS = deep ? 'sub': `items ${theme} ${display(collapsed)}`;
     return (
       <ListContainer deep={deep} css={containerCSS} collapsed={collapsed}>
         {arg.map((elem, index) =>
@@ -44,18 +42,20 @@ class MenuItems extends React.Component {
         elem.sub
           ? <ListItem
             key={index}
-            deep={deep}
             content={this.menuGenerator(elem.sub, deep)}
             name={elem.name}
-            collapsed={this.props.collapsed}
+            {...config}
             container/>
           /*if no react just return LI element*/
-          : <ListItem key={index} name={elem.name}/>)}
+          : <ListItem key={index} name={elem.name} display={display}/>)}
       </ListContainer>
     )
   }
   render() {
     return this.menuGenerator(bar)
   }
+}
+MenuItems.propTypes={
+theme:PropTypes.string.isRequired
 }
 export default CSSModules(MenuItems, styles, {allowMultiple: true});

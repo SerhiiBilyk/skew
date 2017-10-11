@@ -17,9 +17,6 @@ TODO
 # don't forget to use CSSModules
  */
 
-
-
-
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
@@ -37,10 +34,25 @@ class Navigation extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
   }
+  /*
+    toggling between 3 states:
+    1.1 - initial
+    0- expanded
+    1 -collapsed
+     */
   changeState(e) {
     this.setState({
       collapsed: this.state.collapsed ^ 1
     })
+  }
+  /**
+   * [display description]
+   * This function implements CSS logic for changeState function
+   * @param  {number} show -> this.state.collapsed
+   * @return {string} css class
+   */
+  display(show){
+    return show > 1 ? '': !show ? 'show': 'hide';
   }
   handleResize() {
     /*Reset css classes in mobilemenu*/
@@ -48,16 +60,16 @@ class Navigation extends React.Component {
   }
   render() {
     return (
-      <div className={styles.navigation}>
-        <div className={styles.content}>
+      <div styleName='navigation'>
+        <div styleName='content'>
           <Logo img={img}/>
-          <div className={styles.bar}>
-            <MenuItems theme='pc' />
+          <div styleName='bar'>
+            <MenuItems theme='pc' display={this.display} />
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
         </div>
-        <div className={styles.mobile}>
-          <MenuItems show={this.state.collapsed} theme='mobile' collapsed={this.state.collapsed}/>
+        <div >
+          <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>
         </div>
       </div>
     )
