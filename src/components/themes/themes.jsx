@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
 import Wrapper from '../global/wrapper.jsx';
 
-var config = [1,2,3,4,5,6,7,8,9,10];
+var config = [0,1,2,3,4,5,6,7,8,9];
 
 class Themes extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Themes extends React.Component {
   render() {
     var cells = config.map(function(elem, i) {
       return (
-        <div key={i} styleName='cell'>
+        <div key={i} styleName={`cell item-${i+1}`}>
           <p>dsf</p>
         </div>
       )

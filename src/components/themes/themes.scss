@@ -1,10 +1,79 @@
+
+@function item-top($index,$height){
+  @if $index > 5{
+    @return $height ;
+  }@else{
+    @return 0;
+  }
+}
+
+
 .themes{
   border:1px solid black;
   @include clearfix;
+  position:relative;
+  height:300px;
+}
+
+
+@mixin coordinates ($rows,$cells){
+  $index: '0','20%','40%','60%','80%';
+  $list: ();
+  @for $i from 1 through $rows{
+   @for $j from 1 through $cells {
+     $tmp: $i,$j;
+
+     $list: join($list,$tmp,space);
+   }
+  }
+@debug 'tmp' $list;
+  @for $x from 1 through 10 {
+   &.item-#{$x} {
+     transition: all 1s ease;
+     $increment: $x * 2;
+     transform: scale(1);
+      top:   item-top($x,100px);
+     left: unquote(nth($index,nth($list,$increment)));
+   }
+  }
 }
 .cell{
   width:20%;
   height:100px;
   border:1px solid black;
-  float:left;
+  position:absolute;
+@include coordinates(2,5);
+}
+
+
+
+
+
+
+
+
+
+
+
+@mixin coord {
+  $height: 0;
+  @for $x from 1 through 10 {
+    .item-#{$x} {
+      @if $x > 1 {
+        $height: $height + 100;
+      }
+      left: 0;
+      top: unquote($height+'px');
+      width:100%;
+    }
+  }
+};
+@include media('zerro','sm-phone'){
+  @include coord;
+}
+@include media('sm-phone','lg-phone'){
+  .cell{
+
+  @include coordinates(3,4);
+  }
 }
