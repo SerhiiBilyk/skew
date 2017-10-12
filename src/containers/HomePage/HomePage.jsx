@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Iconbox from '../../components/iconbox/iconbox.jsx';
+import Themes from '../../components/themes/themes.jsx';
 import CSSModules from 'react-css-modules';
 
 
@@ -12,6 +13,7 @@ import CSSModules from 'react-css-modules';
     return(
       <div>
         <Iconbox />
+        <Themes />
       </div>
     )
   }

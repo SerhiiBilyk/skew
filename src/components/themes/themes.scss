@@ -1,0 +1,10 @@
+.themes{
+  border:1px solid black;
+  @include clearfix;
+}
+.cell{
+  width:20%;
+  height:100px;
+  border:1px solid black;
+  float:left;
+}
