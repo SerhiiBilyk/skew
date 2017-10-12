@@ -4,7 +4,8 @@
   "description": "just simple RWD page",
   "main": "./src/index.js",
   "scripts": {
-    "test": " jest",
+    "test": "jest",
+    "testing":"nodemon --watch  -e jsx  --exec \"npm  test \" ",
     "build": "webpack --env production",
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --content-base dist/ --env development\"  "
   },

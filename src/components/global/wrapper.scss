@@ -1,0 +1,17 @@
+.wrapper{
+
+  width: 80%;
+  margin: 0 auto;
+  @include clearfix;
+  max-width:1200px;
+  min-width:320px;
+  border:1px solid red;
+  position:relative;
+}
+
+@include media('zerro','sm-tablet'){
+  .wrapper{
+    width:100%;
+    padding:0 30px;
+  }
+}

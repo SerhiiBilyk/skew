@@ -2,16 +2,17 @@
 .skew {
   position: relative;
   height: 0;
+  
+}
 
-  &__rotate {
+.rotate {
     width: 110%;
     transform: rotate(-3.5deg);
     border: 1px solid red;
-    height: 6.7vw;
+    height: 6.45vw;
     top:-3.4vw;
     position: absolute;
     left: -5%;
     background-color: white;
     transform-origin:top;
   }
-}

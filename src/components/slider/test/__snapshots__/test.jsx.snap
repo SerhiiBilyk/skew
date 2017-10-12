@@ -35,7 +35,7 @@ exports[`renders correctly 1`] = `
     className="navigation"
   >
     <div
-      className="content"
+      className="wrapper"
     >
       <div
         className="logo"

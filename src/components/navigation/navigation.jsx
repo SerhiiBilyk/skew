@@ -6,7 +6,7 @@ import img from './img/logo.png';
 import MenuItems from './menu/menuItems.jsx';
 import Hamburger from './hamburger/hamburger.jsx';
 import Logo from './logo/logo.jsx';
-import css from '../global/cssmodules.js';
+import Wrapper from '../global/wrapper.jsx';
 
 
 
@@ -23,16 +23,20 @@ class Navigation extends React.Component {
     this.state = {
       /*initial state*/
       collapsed: 1.1,
-      windowWidth: window.innerWidth
+      stick:false
     }
     this.changeState = this.changeState.bind(this);
     this.handleResize = this.handleResize.bind(this)
+    this.handlePageYOffset=this.handlePageYOffset.bind(this);
   }
   componentDidMount() {
     window.addEventListener('resize', this.handleResize)
+    window.addEventListener('scroll', this.handlePageYOffset)
+
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('scroll', this.handlePageYOffset)
   }
   /*
     toggling between 3 states:
@@ -54,20 +58,24 @@ class Navigation extends React.Component {
   display(show){
     return show > 1 ? '': !show ? 'show': 'hide';
   }
+  handlePageYOffset(){
+    window.pageYOffset > 70 ? this.setState({stick: true}):this.setState({stick: false});
+  }
   handleResize() {
     /*Reset css classes in mobilemenu*/
+
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
   render() {
     return (
-      <div styleName='navigation'>
-        <div styleName='content'>
+      <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
+        <Wrapper>
           <Logo img={img}/>
           <div styleName='bar'>
             <MenuItems theme='pc' display={this.display} />
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
-        </div>
+        </Wrapper>
         <div >
           <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>
         </div>
@@ -75,4 +83,4 @@ class Navigation extends React.Component {
     )
   }
 }
-export default CSSModules(Navigation,styles);
+export default CSSModules(Navigation,styles,{allowMultiple:true});

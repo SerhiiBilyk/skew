@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Slider from '../slider/slider.jsx';
-import {Skew} from './../global/skew.jsx';
+import Skew from './../global/skew.jsx';
+import CSSModules from 'react-css-modules';
+import styles from './header.scss';
 
-
-
-
-export class Header extends React.Component{
+ class Header extends React.Component{
   constructor(props){
     super(props);
   }
   render(){
     return(
-      <div>
+      <div styleName='header'>
         <Slider/>
         <Skew/>
       </div>
     )
   }
 }
+
+
+export default CSSModules(Header, styles)
