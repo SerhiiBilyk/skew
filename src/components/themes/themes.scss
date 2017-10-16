@@ -17,6 +17,23 @@ $height:200px ;
     transform:rotate(-3.5deg) translateY(-50%);
   }
 }
+@keyframes glass{
+  0% {
+    display:block;
+  }
+  100% {
+    display:block;
+       transform:translateY(100%);
+  }
+}
+@keyframes mask{
+  0% {
+    opacity:0.0;
+  }
+  100% {
+    opacity:0.8;
+  }
+}
 $blue:#00ccff;
 .cell {
   width: 20%;
@@ -27,10 +44,17 @@ $blue:#00ccff;
   overflow:hidden;
   &:hover{
     .mask{
-      opacity:0.8;
+      display:block;
+      animation-name: mask;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
     }
     .glass{
-           transform:translateY(100%);
+      display:block;
+      animation-name: glass;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+
     }
    .child{
      display:block;
@@ -70,6 +94,7 @@ $blue:#00ccff;
   }
 }
 .glass{
+  display:none;
   position:absolute;
   width:100%;
   color:white;
@@ -86,6 +111,7 @@ $blue:#00ccff;
   opacity:0;
   transition:opacity 0.5s ease;
   will-change:opacity;
+  display:none;
 
 }
 
@@ -108,11 +134,17 @@ $blue:#00ccff;
 }
 
 @include media('lg-phone','sm-tablet'){
+  .themes{
+    height:$height * 4;
+  }
   .cell{
     @include coordinates(4,3,$height,10)
   }
 }
 @include media('sm-tablet','md-tablet'){
+  .themes{
+    height:$height * 3;
+  }
   .cell{
     @include coordinates(3,4,$height,10)
   }

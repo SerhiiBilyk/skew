@@ -7,9 +7,10 @@ var APP_DIR = path.resolve(__dirname, './src');
 var BUILD_DIR = path.resolve(__dirname, './dist');
 
 var commonConfig = {
-  entry: {
-    app: APP_DIR + '/index.jsx'
-  },
+  entry: [
+    /*for IE*/
+    "babel-polyfill" ,APP_DIR + '/index.jsx'
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'app.js'
@@ -60,7 +61,7 @@ var commonConfig = {
             presets: [
               'env', 'react'
             ],
-            plugins: ["transform-object-assign"]
+            plugins: []
           }
         }
       }, {
