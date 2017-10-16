@@ -60,7 +60,7 @@ var commonConfig = {
             presets: [
               'env', 'react'
             ],
-            plugins: []
+            plugins: ["transform-object-assign"]
           }
         }
       }, {

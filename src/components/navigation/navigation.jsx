@@ -76,7 +76,7 @@ class Navigation extends React.PureComponent {
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
         </Wrapper>
-        <div >
+        <div styleName='scrollbar'>
           <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>
         </div>
       </div>
