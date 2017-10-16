@@ -2,14 +2,16 @@
   border: 2px solid red;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  z-index: 5;
   padding-top: 70px;
   font-size: 0;
   margin: 0 auto;
+  transform:translateZ(0);
   &.stick{
     padding:0;
     position:fixed;
     background-color:black;
+    top:0;
   }
 }
 .content {

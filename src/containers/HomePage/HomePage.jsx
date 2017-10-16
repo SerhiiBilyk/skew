@@ -5,7 +5,7 @@ import Themes from '../../components/themes/themes.jsx';
 import CSSModules from 'react-css-modules';
 
 
- export default  class HomePage extends React.Component{
+ export default class HomePage extends React.Component{
   constructor(props){
     super(props);
   }

@@ -10,11 +10,11 @@ $height:200px ;
 }
 @keyframes anim {
   0% {
-    border: 10px solid white;
+    display:block;
   }
-
   100% {
-    border: 0 solid white;
+    display:block;
+    transform:rotate(-3.5deg) translateY(-50%);
   }
 }
 $blue:#00ccff;
@@ -25,9 +25,6 @@ $blue:#00ccff;
   @include coordinates(2,5,$height,10);
   transition: all 1s ease;
   overflow:hidden;
-  transform:translateZ(0);
-  will-change:transform;
-
   &:hover{
     .mask{
       opacity:0.8;
@@ -36,18 +33,21 @@ $blue:#00ccff;
            transform:translateY(100%);
     }
    .child{
-     transform:rotate(-3.5deg) translateY(-50%);
+     display:block;
+     animation-name: anim;
+     animation-duration: 0.5s;
+     animation-fill-mode: forwards;
    }
   }
 }
 .child{
   width:200%;
   height:200px;
-  position:relative;
+  position:absolute;
+  display:none;
   left:-50%;
   will-change:transform;
   transform:rotate(-3.5deg) translateY(10px);
-  transition:transform 0.2s ease-in;
   background-color:$blue;
   text-align:center;
   color:white;

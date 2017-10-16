@@ -10,14 +10,13 @@ import Wrapper from '../global/wrapper.jsx';
 
 
 
-/*
-TODO
-# make content a little bit less, to 60%, also minify logo and bar
-# continue with menu in tablet mode
-# don't forget to use CSSModules
+/**
+ * Pay attention at PureComponent
+ * every time we click controls in Slider component we trigger re-render Slider and component
+ * because  Navigation component does not change 'onClick' Slider event, Navigation don't need to re-render
  */
 
-class Navigation extends React.Component {
+class Navigation extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,8 +29,8 @@ class Navigation extends React.Component {
     this.handlePageYOffset=this.handlePageYOffset.bind(this);
   }
   componentDidMount() {
-    window.addEventListener('resize', this.handleResize)
-    window.addEventListener('scroll', this.handlePageYOffset)
+    window.addEventListener('resize', this.handleResize,{passive:true})
+    window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
 
   }
   componentWillUnmount() {
@@ -67,6 +66,7 @@ class Navigation extends React.Component {
     (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
   render() {
+    console.log('navigation:;render')
     return (
       <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
         <Wrapper>
