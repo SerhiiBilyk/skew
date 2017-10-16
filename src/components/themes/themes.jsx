@@ -15,12 +15,19 @@ class Themes extends React.Component {
     var cells = config.map(function(elem, i) {
       return (
         <div key={i} styleName={`cell item-${i+1}`}>
-          <p>dsf</p>
+          <div styleName='glass'>
+            <span className='fa fa-search fa-2x'></span>
+          </div>
+          <div styleName='mask'></div>
+          <div styleName='child'>
+              <span className='fa fa-eye'></span>
+              <span className='fa fa-heart'></span>
+              <span className='fa fa-heart-o'></span>
+          </div>
         </div>
       )
     })
     console.log('cells', cells)
-
     return (
       <Wrapper>
         <div styleName='themes'>
