@@ -65,7 +65,7 @@ $top:0;
   @for $x from 1 through $quantity {
    &.item-#{$x} {
      will-change:transform;
-     transition: all 1s ease;
+     //transition: all 1s ease;
      $increment: $x * 2;
      @if (($x - 1) % $cells ==0) and ($x > 1) {
        $top:$top + 1;

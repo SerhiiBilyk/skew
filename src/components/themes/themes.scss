@@ -40,7 +40,7 @@ $blue:#00ccff;
   height:$height ;
   position: absolute;
   @include coordinates(2,5,$height,10);
-  transition: all 1s ease;
+  transition: transform 1s ease;
   overflow:hidden;
   &:hover{
     .mask{

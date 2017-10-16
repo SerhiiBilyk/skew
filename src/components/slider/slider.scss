@@ -48,6 +48,7 @@ $max-width: 900px;
     background-position: 50% 50%;
     background-size: cover;
     transform:translateZ(0);
+    will-change:opacity;
     @for $i from 1 through 3 {
       &.x-#{$i} {
         background-image: url('./img/#{$i}.jpg');

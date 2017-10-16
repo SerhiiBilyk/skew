@@ -27,7 +27,6 @@ class Themes extends React.Component {
         </div>
       )
     })
-    console.log('cells', cells)
     return (
       <Wrapper>
         <div styleName='themes'>

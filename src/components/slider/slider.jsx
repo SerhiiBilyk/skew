@@ -112,7 +112,6 @@ export class Slider extends React.PureComponent {
     })
   }
   render() {
-    console.log('slider render')
     var buttons = content.map((elem, index) => {
       var focused = this.state.current === index
         ? true

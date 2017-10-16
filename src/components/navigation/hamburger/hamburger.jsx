@@ -6,7 +6,7 @@ import css from  '../../global/cssmodules.js';
 import PropTypes from 'prop-types';
 
 
-class Hamburger extends React.Component {
+class Hamburger extends React.PureComponent {
   constructor(props) {
     super(props);
     this.clickHandler=this.clickHandler.bind(this)
@@ -15,7 +15,7 @@ class Hamburger extends React.Component {
     this.props.change(e)
   }
   render() {
-
+    console.log('Hamburger::render')
     return (
       <div styleName='wrapper'>
         <span styleName='height-fix'>&nbsp;</span>;
