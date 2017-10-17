@@ -7,10 +7,12 @@ import CSSModules from 'react-css-modules';
 
 
 export const Skew=(props)=>(
-  <div styleName='skew'>
+  <div styleName={`skew zindex-${props.index}`}>
     <div styleName='rotate'></div>
   </div>
 );
+Skew.defaultProps = {
+  index: 0
+};
 
-
-export default CSSModules(Skew,styles);
+export default CSSModules(Skew,styles, {allowMultiple: true});

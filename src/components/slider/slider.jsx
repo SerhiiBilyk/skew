@@ -26,7 +26,7 @@ var content = [
  * @param {integer} slide slide number
  */
 
-export class Button extends React.Component{
+export class Button extends React.PureComponent{
   constructor(props){
     super(props);
   }
@@ -38,7 +38,6 @@ export class Button extends React.Component{
     var focus = focused
       ? 'focus'
       : '';
-
     return (
       <span className={styles['control--cell']}>
         <button disabled={!!focus} className={css(styles.button,styles[`${focus}`])} onClick={(e) =>{this.clickHandler(slide);}}></button>
@@ -72,7 +71,7 @@ function Slide(props) {
  * @param  {integer} active active slide
  * @param {integer} previous prev slide
  */
-class Slides extends React.Component {
+class Slides extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -97,7 +96,7 @@ class Slides extends React.Component {
 
 }
 
-export class Slider extends React.Component {
+export class Slider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -107,7 +106,6 @@ export class Slider extends React.Component {
     this.current = this.state.current;
   }
   changeSlide(slideID) {
-
     this.setState({
       prev: this.state.current,
       current: slideID
@@ -126,7 +124,7 @@ export class Slider extends React.Component {
         <Navigation/>
         <Slides content={content} current={this.state.current} previous={this.state.prev}/>
         <div className={styles.control}>
-         {buttons}    
+         {buttons}
        </div>
       </div>
     )

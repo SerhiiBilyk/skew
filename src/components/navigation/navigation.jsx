@@ -7,36 +7,46 @@ import MenuItems from './menu/menuItems.jsx';
 import Hamburger from './hamburger/hamburger.jsx';
 import Logo from './logo/logo.jsx';
 import Wrapper from '../global/wrapper.jsx';
+function changeBody(){
 
 
+}
 
-/*
-TODO
-# make content a little bit less, to 60%, also minify logo and bar
-# continue with menu in tablet mode
-# don't forget to use CSSModules
+
+/**
+ * Pay attention at PureComponent
+ * every time we click controls in Slider component we trigger re-render Slider and component
+ * because  Navigation component does not change 'onClick' Slider event, Navigation don't need to re-render
  */
 
-class Navigation extends React.Component {
+class Navigation extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       /*initial state*/
       collapsed: 1.1,
-      stick:false
+      stick:false,
+      pc:true,
+      mobile:true
     }
     this.changeState = this.changeState.bind(this);
     this.handleResize = this.handleResize.bind(this)
     this.handlePageYOffset=this.handlePageYOffset.bind(this);
   }
+  /**
+   * TODO
+   *very expensive listeners, they must be cheaper
+   */
   componentDidMount() {
-    window.addEventListener('resize', this.handleResize)
-    window.addEventListener('scroll', this.handlePageYOffset)
-
+    window.addEventListener('resize', this.handleResize,{passive:true})
+    window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
     window.removeEventListener('scroll', this.handlePageYOffset)
+  }
+  componentWillMount(){
+    this.handleResize()
   }
   /*
     toggling between 3 states:
@@ -47,7 +57,14 @@ class Navigation extends React.Component {
   changeState(e) {
     this.setState({
       collapsed: this.state.collapsed ^ 1
-    })
+    },this.bodyModify)
+  }
+  /**
+   * TODO
+   * fix this in future, bad practice
+   */
+  bodyModify(){
+    document.documentElement.style.overflow=!this.state.collapsed ?'hidden' :'auto';
   }
   /**
    * [display description]
@@ -63,21 +80,27 @@ class Navigation extends React.Component {
   }
   handleResize() {
     /*Reset css classes in mobilemenu*/
+    if(window.innerWidth > 1024){
+      this.setState({collapsed: 1.1,pc:true,mobile:false})
+    }else{
+      this.setState({pc:false,mobile:true})
+    }
 
-    (window.innerWidth > 1024) && this.setState({collapsed: 1.1})
   }
   render() {
+
+    console.log('Navigation::render','\ncollapsed',this.state)
     return (
       <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
         <Wrapper>
           <Logo img={img}/>
           <div styleName='bar'>
-            <MenuItems theme='pc' display={this.display} />
+            {this.state.pc && <MenuItems theme='pc' display={this.display} />}
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
         </Wrapper>
-        <div >
-          <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>
+        <div styleName='scrollbar'>
+           {this.state.mobile && <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>}
         </div>
       </div>
     )

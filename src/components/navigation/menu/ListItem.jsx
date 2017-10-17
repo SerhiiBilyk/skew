@@ -35,6 +35,7 @@ class ListItem extends React.Component {
     })
   }
   render() {
+    //console.log('ListItem::render')
     var {container,display,deep,name,content}=this.props;
 /**
  * If LI element is container, we set special css class 'container' and implement display logic,

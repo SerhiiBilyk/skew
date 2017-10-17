@@ -1,5 +1,6 @@
 $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 
+
 @keyframes anim {
   from {
     max-height: 0;
@@ -105,10 +106,11 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
     position: relative;
     color: black;
     width: 100%;
-    z-index: 1;
-    border: 1px solid white;
+    z-index: 20;
+    //border: 1px solid white;
     display: none;
-    height: 0;
+    /*disable-- height:0 --for IE*/
+    //height: 0;
     transform: translateZ(0);
     transition: all 0.1s ease-in-out;
     overflow: hidden;
@@ -178,7 +180,8 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 
 
   & > .sub {
-    height: 0;
+    /*IE fix*/
+    //height: 0;
     max-height: 0;
     overflow: hidden;
     display: none;

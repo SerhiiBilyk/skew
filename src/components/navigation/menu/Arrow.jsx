@@ -5,12 +5,9 @@ import CSSModules from 'react-css-modules';
 import styles from './arrow.scss';
 
 
-class Arrow extends React.Component{
+class Arrow extends React.PureComponent{
   constructor(props){
     super(props);
-  }
-  componentWillReceiveProps(nextProps) {
-
   }
   render(){
     var direction=this.props.direction;

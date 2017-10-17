@@ -1,9 +1,17 @@
 @import './style/reset.scss';
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+html{
+  max-width:100%;
+  overflow-x: hidden;
 }
-body{height:10000px;}
+ body {
+      height:10000px;
+      font-family:"Open Sans";
+}
+
+.block{
+  overflow:hidden;
+  color:red;
+}
 .test{
   position:absolute;
   width:100px;

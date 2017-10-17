@@ -1,15 +1,19 @@
+
 .navigation {
   border: 2px solid red;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  z-index: 15;
   padding-top: 70px;
   font-size: 0;
   margin: 0 auto;
+  will-change:position;
+  transform:translateZ(0);
   &.stick{
     padding:0;
     position:fixed;
     background-color:black;
+    top:0;
   }
 }
 .content {
@@ -33,7 +37,27 @@
 
 
 }
+.scrollbar{
+  overflow-y:scroll;
+  max-height:calc(100vh - 70px);
+  scrollbar-base-color: #ff8353;
+   scrollbar-arrow-color: #F8B195;
+   scrollbar-track-color:#F8B195;
+   -ms-scrollbar-3dlight-color: blue;
+    scrollbar-3dlight-color: blue;
+  &::-webkit-scrollbar{
+    width: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #F8B195;
 
+  &-thumb{
+    border-radius:10px;
+    background-color:#ff8353;
+    	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  }
+  }
+
+}
 
 
 

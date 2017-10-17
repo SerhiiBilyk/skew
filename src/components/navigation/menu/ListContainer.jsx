@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
 
-class ListContainer extends React.Component{
-  constructor(props){
+class ListContainer extends React.Component {
+  constructor(props) {
     super(props)
   }
-  render(){
-    return(
+  shouldComponentUpdate(nextProps) {
+    console.log('nextProps',nextProps.collapsed,this.props.collapsed)
+    return nextProps.collapsed !== this.props.collapsed;
+  }
+  render() {
+    return (
       <ul deep={this.props.deep} styleName={this.props.css}>
         {this.props.children}
       </ul>
     )
   }
 }
-export default CSSModules(ListContainer,styles, {allowMultiple: true})
+export default CSSModules(ListContainer, styles, {allowMultiple: true})
