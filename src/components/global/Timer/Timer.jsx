@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+/**
+ * TODO
+ * IE and Firefox can't cleanInterval, infiniti loop, fix it
+ */
 
 class Timer extends React.PureComponent {
   constructor(props) {

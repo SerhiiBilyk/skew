@@ -9,6 +9,11 @@ import Link from '../../global/link/link.jsx';
 import ListContainer from './ListContainer.jsx';
 import ListItem from './ListItem.jsx';
 
+/**
+ * TODO
+ * Firefox bug:
+ * in PC mode there are disabled scroll bar under navigation menu, remove it by CSS
+ */
 class MenuItems extends React.PureComponent {
   constructor(props) {
     super(props);
