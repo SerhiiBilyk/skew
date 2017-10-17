@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
-import Skew from '../skew.jsx';
+import Skew from '../Skew/skew.jsx';
 
 
  class SkewSection extends React.PureComponent{

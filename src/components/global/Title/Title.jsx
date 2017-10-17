@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './title.scss';
 import CSSModules from 'react-css-modules';
+import PropTypes from 'prop-types';
 
 class Title extends React.PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
-    console.log('theme', this.props.theme)
-    var {title, sub, theme, size} = this.props;
+    var {title, sub, theme} = this.props;
 
     return (
       <div styleName={`title ${this.props.theme}`}>
@@ -19,5 +19,8 @@ class Title extends React.PureComponent {
     )
   }
 }
-
+Title.propTypes={
+theme:PropTypes.string.isRequired,
+title:PropTypes.string.isRequired
+}
 export default CSSModules(Title, styles, {allowMultiple: true});

@@ -11,6 +11,7 @@ export const Skew=(props)=>(
     <div styleName='rotate'></div>
   </div>
 );
+
 Skew.defaultProps = {
   index: 0
 };

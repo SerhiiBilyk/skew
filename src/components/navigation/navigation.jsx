@@ -6,13 +6,7 @@ import img from './img/logo.png';
 import MenuItems from './menu/menuItems.jsx';
 import Hamburger from './hamburger/hamburger.jsx';
 import Logo from './logo/logo.jsx';
-import Wrapper from '../global/wrapper.jsx';
-function changeBody(){
-
-
-}
-
-
+import Wrapper from '../global/Wrapper/wrapper.jsx';
 /**
  * Pay attention at PureComponent
  * every time we click controls in Slider component we trigger re-render Slider and component

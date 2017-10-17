@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import styles from './iconbox.scss';
 import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
-import Wrapper from '../global/wrapper.jsx';
+import Wrapper from '../global/Wrapper/wrapper.jsx';
 import Icon from './Icon.jsx';
 
 var config = [

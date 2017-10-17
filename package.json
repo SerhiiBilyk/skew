@@ -23,6 +23,7 @@
       "node_modules/enzyme/"
     ],
     "collectCoverageFrom": [
+      "./src/components/**/test/test.jsx",
       "./src/components/**/test/*.jsx",
       "./src/components/*.test.jsx",
       "!./src/components/**/*.scss",
