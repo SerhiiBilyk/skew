@@ -11,7 +11,6 @@ import Skew from '../skew.jsx';
   render(){
     return(
       <div>
-        <Skew index={0}/>
         {this.props.children}
         <Skew index={0}/>
       </div>
