@@ -3,6 +3,7 @@
   position: relative;
   @include clearfix;
   z-index:10;
+  padding-bottom:40px;
 }
 
 .cell {
@@ -12,18 +13,7 @@
   padding:0 20px 30px;
 }
 
-.circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  border: 1px solid black;
-  margin: 0 auto;
-  text-align: center;
-  line-height:100px;
-  span{
-    vertical-align:middle;
-  }
-}
+
 .header{
   color:black;
   margin:20px 0;

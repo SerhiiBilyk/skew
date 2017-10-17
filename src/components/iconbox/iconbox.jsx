@@ -4,6 +4,7 @@ import styles from './iconbox.scss';
 import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
 import Wrapper from '../global/wrapper.jsx';
+import Icon from './Icon.jsx';
 
 
 var config=[
@@ -23,7 +24,6 @@ var config=[
   }
 ]
 
-
 class Iconbox extends React.Component {
   constructor(props) {
     super(props);
@@ -32,9 +32,7 @@ class Iconbox extends React.Component {
     var cells=config.map(function(elem,i){
       return (
         <div key={i} styleName='cell'>
-          <div styleName='circle'>
-              <span className={`fa fa-${elem.icon} fa-2x`}></span>
-          </div>
+          <Icon icon={elem.icon}/>
           <div styleName='header'>
             <p>{elem.header}</p>
           </div>

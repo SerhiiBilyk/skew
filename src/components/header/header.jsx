@@ -14,7 +14,7 @@ import styles from './header.scss';
     return(
       <div styleName='header'>
         <Slider/>
-        <Skew/>
+        <Skew index={10}/>
       </div>
     )
   }
