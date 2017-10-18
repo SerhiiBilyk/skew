@@ -15,7 +15,6 @@ class Hamburger extends React.PureComponent {
     this.props.change(e)
   }
   render() {
-    console.log('Hamburger::render')
     return (
       <div styleName='wrapper'>
         <span styleName='height-fix'>&nbsp;</span>;

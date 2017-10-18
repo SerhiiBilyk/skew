@@ -10,7 +10,6 @@ import styles from './header.scss';
     super(props);
   }
   render(){
-    console.log('Header::render')
     return(
       <div styleName='header'>
         <Slider/>

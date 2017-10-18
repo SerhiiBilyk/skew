@@ -57,7 +57,6 @@ class MenuItems extends React.PureComponent {
     )
   }
   render() {
-    console.log('MenuItems.props',this.props.theme)
     return this.menuGenerator(bar)
   }
 }

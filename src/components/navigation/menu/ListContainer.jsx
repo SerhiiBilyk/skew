@@ -8,7 +8,6 @@ class ListContainer extends React.Component {
     super(props)
   }
   shouldComponentUpdate(nextProps) {
-    console.log('nextProps',nextProps.collapsed,this.props.collapsed)
     return nextProps.collapsed !== this.props.collapsed;
   }
   render() {

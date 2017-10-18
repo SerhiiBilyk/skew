@@ -82,8 +82,6 @@ class Navigation extends React.PureComponent {
 
   }
   render() {
-
-    console.log('Navigation::render','\ncollapsed',this.state)
     return (
       <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
         <Wrapper>

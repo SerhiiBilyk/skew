@@ -8,7 +8,6 @@ class Logo extends React.PureComponent {
     super(props);
   }
   render() {
-    console.log('Logo::render')
     return (
       <div styleName='logo'>&nbsp;
         <img src={this.props.img}/>
