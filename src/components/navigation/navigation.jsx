@@ -37,7 +37,7 @@ class Navigation extends React.PureComponent {
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
-    window.removeEventListener('scroll', this.handlePageYOffset)
+    window.removeEventListener('scroll', this.handlePageYOffset,true)
   }
   componentWillMount(){
     this.handleResize()
@@ -82,6 +82,7 @@ class Navigation extends React.PureComponent {
 
   }
   render() {
+    console.log('collapsed',this.state.collapsed)
     return (
       <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
         <Wrapper>
@@ -91,7 +92,7 @@ class Navigation extends React.PureComponent {
             <Hamburger change={this.changeState} collapsed={this.state.collapsed}/>
           </div>
         </Wrapper>
-        <div styleName='scrollbar'>
+        <div styleName={`scrollbar ${this.state.collapsed==0?'scroll':'hidden'}`}>
            {this.state.mobile && <MenuItems theme='mobile' collapsed={this.state.collapsed} display={this.display}/>}
         </div>
       </div>

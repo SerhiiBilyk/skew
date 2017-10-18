@@ -1,4 +1,3 @@
-
 .navigation {
   border: 2px solid red;
   position: absolute;
@@ -7,21 +6,23 @@
   padding-top: 70px;
   font-size: 0;
   margin: 0 auto;
-  will-change:position;
-  transform:translateZ(0);
-  &.stick{
-    padding:0;
-    position:fixed;
-    background-color:black;
-    top:0;
+  will-change: position;
+  transform: translateZ(0);
+
+  &.stick {
+    padding: 0;
+    position: fixed;
+    background-color: black;
+    top: 0;
   }
 }
+
 .content {
   min-height: 30px;
   width: 80%;
   margin: 0 auto;
   @include clearfix;
-  max-width:1200px;
+  max-width: 1200px;
 }
 
 .bar {
@@ -30,35 +31,37 @@
   font-size: 0;
   border: 2px solid white;
   color: white;
-  @include linkReset{
-    color:white;
-    text-decoration:none;
+  @include linkReset {
+    color: white;
+    text-decoration: none;
   };
-
-
 }
-.scrollbar{
-  overflow-y:scroll;
-  max-height:calc(100vh - 70px);
+
+.scrollbar {
+
+  max-height: calc(100vh - 70px);
   scrollbar-base-color: #ff8353;
-   scrollbar-arrow-color: #F8B195;
-   scrollbar-track-color:#F8B195;
-   -ms-scrollbar-3dlight-color: blue;
-    scrollbar-3dlight-color: blue;
-  &::-webkit-scrollbar{
+  scrollbar-arrow-color: #F8B195;
+  scrollbar-track-color: #F8B195;
+  -ms-scrollbar-3dlight-color: blue;
+  scrollbar-3dlight-color: blue;
+  &.hidden{
+      overflow-y: hidden;
+  }
+  &.scroll{
+      overflow-y: scroll;
+  }
+
+  &::-webkit-scrollbar {
     width: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #F8B195;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #F8B195;
 
-  &-thumb{
-    border-radius:10px;
-    background-color:#ff8353;
-    	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    &-thumb {
+      border-radius: 10px;
+      background-color: #ff8353;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    }
   }
-  }
-
 }
-
-
-
 @import './media.scss';

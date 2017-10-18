@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './results.scss';
 import Icon from '../iconbox/Icon.jsx';
-import Wrapper from '../global/wrapper.jsx';
+import Wrapper from '../global/Wrapper/wrapper.jsx';
 import Button from '../global/Button/button.jsx';
 import Timer from '../global/Timer/timer.jsx';
 

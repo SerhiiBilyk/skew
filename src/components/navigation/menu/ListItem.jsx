@@ -7,7 +7,7 @@ import Link from '../../global/link/link.jsx';
 import Arrow from './Arrow.jsx';
 
 
-class ListItem extends React.Component {
+class ListItem extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,6 +21,9 @@ class ListItem extends React.Component {
   if windowInnerWidth is >1024, it receives collapsed 1.1.
   1.1. is the initial state(reset)
    */
+  componentWillUnmount(){
+    console.log('Unmount')
+  }
   componentWillReceiveProps(nextProps) {
     /*
      * change this line to : nextProps.collapsed ===1.1&& this.setState({show: 1.1})
