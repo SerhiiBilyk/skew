@@ -87,9 +87,10 @@ $top:0;
   $circle-length:(2 * 3.14) * $circle-radius;
   @for $i from 1 through 3{
     $index:($circle-length / 100) * (nth($percentage,$i));
-    @debug 'index' 2.333 * 6.455;
     @keyframes fillup-#{$i}{
-      to {stroke-dasharray:$index $circle-length; }
+      to {
+        stroke-dasharray:$index $circle-length;
+       }
     }
     .item-#{$i}{
       animation: fillup-#{$i} 2s  forwards;

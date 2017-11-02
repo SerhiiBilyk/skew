@@ -15,7 +15,7 @@ class Diagram extends React.Component {
     var circles=percentage.map(function(elem,index){
       return(
         <div key={index} styleName='circle' per={`${elem}%`}>
-        {/*  <svg width="92" height="92" >
+        { /* <svg width="92" height="92" >
             <circle r="46" cx="46" cy="46" stroke="#70c542" stroke-dasharray={`${(289/100)*elem} 289`} stroke-width="10" styleName={`item-${index+1}`}/>
           </svg>
           */}
