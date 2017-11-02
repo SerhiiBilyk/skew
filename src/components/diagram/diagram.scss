@@ -1,24 +1,53 @@
+$blue: #00ccff;
+$side: 90px;
+@debug 'calculator' $side - 1px;
+
 .diagram {
   border: 1px solid red;
-  height: 300px;
+  //height: 800px;
   background-color: white;
-  padding: 100px;
+  text-align: center;
+    @include clearfix;
+    padding-bottom:6.45vw;
+
+}
+.name{
+  margin:10px 0;
+  font-size:22px;
+  line-height:28px;
+  font-weight:400;
+}
+.text{
+  margin:10px 0;
+  line-height:22px;
+  font-size:13px;
 }
 
 .circle {
   position: relative;
+  display: inline-block; //  margin:5px;
+  width: 33.3333%;
+  float: left;
+
+}
+
+.container {
+  height: 100%;
   display: inline-block;
+  position: relative;
 
   &::after {
     content: attr(per);
     position: absolute;
     color: black;
-    left: 0;
-    line-height: 92px;
+    top: 4px;
+    left: 4px;
+    line-height: $side;
     text-align: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
+    width: $side - 8px;
+    height: $side - 8px;
+    border-radius: 50px;
+    background-color: white;
   }
 }
 @function PercentToDegree($percent) {
@@ -29,7 +58,11 @@
      @return unquote( '180deg');
   }
 }
-@function left($percent) {
+/**
+ * if more then 50%, then we need to find the difference
+ *for example, if we have 72%, then second circle must rotate for 72%-50%=12%
+  */
+@function normalize($percent) {
    @if ($percent <= 50){
     @return 0;
   }
@@ -37,34 +70,30 @@
      @return $percent - 50;
   }
 }
-@mixin circleDiagram($percent) {
-   @keyframes right{
-    to {
-      transform: rotate(PercentToDegree($percent));
-    }
-  }
-  @keyframes left {
-    0% {
-      opacity: 1;
+@include circleDiagram((66,82,41));
+@for $i from 1 through 3 {
+  .item-#{$i} {
+    &::after {
+      animation: after-#{$i} 1s linear 1;
+      animation-fill-mode: forwards;
+      animation-delay: 3s;
     }
 
-    50% {
-      opacity: 1;
-    }
-
-    100% {
-      transform: rotate(PercentToDegree(left($percent)));
-      opacity: 1;
+    &::before {
+      animation: before-#{$i} 3s linear 1;
+      animation-fill-mode: forwards;
+      animation-delay: inherit;
     }
   }
 }
-@include circleDiagram(78);
+
 .pie {
-  width: 100px;
-  height: 100px;
+  display: inline-block;
+  width: $side;
+  height: $side;
   border-radius: 50%;
-  background: yellowgreen;
-  background-image: linear-gradient(to right, transparent 50%, #655 0);
+  background: #555555;
+  background-image: linear-gradient(to right, transparent 50%, $blue 0);
   position: relative;
 
   &::after {
@@ -73,15 +102,12 @@
     margin-left: 50%;
     height: 100%;
     border-radius: 0 100% 100% 0 / 50%;
-    background-color: #655;
+    background-color: $blue;
     transform-origin: left;
     position: relative;
-    top: -100px;
+    top: -$side;
     opacity: 0;
     transform-origin: left;
-    animation: left 1s linear 1;
-    animation-fill-mode: forwards;
-    animation-delay: 3s;
   }
 
   &::before {
@@ -92,8 +118,10 @@
     border-radius: 0 100% 100% 0 / 50%;
     background-color: inherit;
     transform-origin: left;
-    animation: right 3s linear 1;
-    animation-fill-mode: forwards;
-    animation-delay: inherit;
+  }
+}
+@include media('zerro','sm-tablet'){
+  .circle{
+width:100%;
   }
 }

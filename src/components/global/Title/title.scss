@@ -32,5 +32,8 @@
 @include media('sm-phone','lg-phone'){
   .title{
     padding:17px 0 48px;
+    h1{
+      font-size:30px;
+    }
   }
 }

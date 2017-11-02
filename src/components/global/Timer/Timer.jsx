@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 /**
  * TODO
- * IE and Firefox can't cleanInterval, infiniti loop, fix it
+ *  -- var offsetTop -- write recursive funtion for this ugly line!
  */
 
 class Timer extends React.Component {
@@ -22,6 +22,7 @@ class Timer extends React.Component {
     window.removeEventListener('scroll', this.handlePageYOffset,true);
   }
   handlePageYOffset() {
+
     var offsetTop = this.timerElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.offsetTop;
     /**
  * if timer appears in visible zone
@@ -48,7 +49,7 @@ class Timer extends React.Component {
       }
     })
     /*if timer value > max value = stop timer*/
-    if (this.state.timer >= this.props.max) {  
+    if (this.state.timer >= this.props.max) {
       clearInterval(this.timerID)
     }
   }

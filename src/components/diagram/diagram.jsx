@@ -2,31 +2,57 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './diagram.scss';
-
+import Title from '../global/Title/Title.jsx';
 import Wrapper from '../global/Wrapper/wrapper.jsx';
 
-const percentage=[66,82,41];
+const percentage = [66, 82, 41];
+/*
+TODO
+write scroll logic, because css animation should start when user scroll to circle diagrams
+ */
+var TitleConfig = {
+  title: 'Why Us? We Care About Our Clients and Make Their Life Easier!',
+  sub: 'We listen, we discuss, we advise and develop. We are flexible, transparent and customer-focused.'
+}
+var CircleDiagramsConfig = [
+  {
+    name: 'WordPress',
+    percentage: 66,
+    text: 'Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis.'
+  }, {
+    name: 'HTML5',
+    percentage: 82,
+    text: 'Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis.'
+  }, {
+    name: 'CSS3',
+    percentage: 41,
+    text: 'Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis.'
+  }
+]
 
 class Diagram extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    var circles=percentage.map(function(elem,index){
-      return(
-        <div key={index} styleName='circle' per={`${elem}%`}>
-        { /* <svg width="92" height="92" >
-            <circle r="46" cx="46" cy="46" stroke="#70c542" stroke-dasharray={`${(289/100)*elem} 289`} stroke-width="10" styleName={`item-${index+1}`}/>
-          </svg>
-          */}
-         <div styleName={`pie`} ></div>
+    var circles = CircleDiagramsConfig.map(function(elem, index) {
+      return (
+        <div key={index} styleName='circle' >
+          <div styleName='container' per={`${elem.percentage}%`}>
+            <div styleName={`pie item-${index + 1}`}></div>
+          </div>
+          <div>
+            <p styleName='name'>{elem.name}</p>
+            <p styleName='text'>{elem.text}</p>
+          </div>
         </div>
       )
     })
     return (
       <Wrapper>
+
         <div styleName='diagram'>
-          {circles}
+          <Title theme='dark' {...TitleConfig}/> {circles}
         </div>
       </Wrapper>
     )

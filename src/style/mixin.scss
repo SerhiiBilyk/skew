@@ -78,22 +78,31 @@ $top:0;
    }
   }
 }
-/**
- * Circle animated diagram
- * $percentage {[SASS list]} list of percentages, example: (50,98,26);
- * $circle-radius {[integer]} SVG circle radius
- */
-@mixin diagram($percentage,$circle-radius){
-  $circle-length:(2 * 3.14) * $circle-radius;
-  @for $i from 1 through 3{
-    $index:($circle-length / 100) * (nth($percentage,$i));
-    @keyframes fillup-#{$i}{
+
+
+
+@mixin circleDiagram($list) {
+   @for $i from 1 through 3{
+    @debug 'i' $i;
+    @keyframes before-#{$i} {
       to {
-        stroke-dasharray:$index $circle-length;
-       }
+        transform: rotate(PercentToDegree(nth($list,$i)));
+      }
     }
-    .item-#{$i}{
-      animation: fillup-#{$i} 2s  forwards;
+    @keyframes after-#{$i} {
+       @debug'check' nth($list,$i);
+      @if nth($list,$i) > 50 {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(PercentToDegree(normalize(nth($list,$i))));
+          opacity: 1;
+        }
+      }
     }
   }
 }
