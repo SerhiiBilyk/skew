@@ -32,12 +32,14 @@ class Navigation extends React.PureComponent {
    *very expensive listeners, they must be cheaper
    */
   componentDidMount() {
+
     window.addEventListener('resize', this.handleResize,{passive:true})
-    window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
+    //window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
-    window.removeEventListener('scroll', this.handlePageYOffset,true)
+  //  window.removeEventListener('scroll', this.handlePageYOffset,true)
+
   }
   componentWillMount(){
     this.handleResize()
@@ -70,19 +72,22 @@ class Navigation extends React.PureComponent {
     return show > 1 ? '': !show ? 'show': 'hide';
   }
   handlePageYOffset(){
+
     window.pageYOffset > 70 ? this.setState({stick: true}):this.setState({stick: false});
+    window.removeEventListener('scroll', this.handlePageYOffset,true)
   }
   handleResize() {
     /*Reset css classes in mobilemenu*/
     if(window.innerWidth > 1024){
+      /* reset state */
       this.setState({collapsed: 1.1,pc:true,mobile:false})
+      document.documentElement.style.overflow='auto';
     }else{
       this.setState({pc:false,mobile:true})
     }
 
   }
   render() {
-    console.log('collapsed',this.state.collapsed)
     return (
       <div styleName={'navigation '+(this.state.stick ? 'stick':'')}>
         <Wrapper>

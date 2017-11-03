@@ -49,7 +49,7 @@ class Results extends React.Component {
       )
     })
     return (
-      <div styleName='results'>
+      <div id='results' styleName='results'>
         <Wrapper>
           <div styleName='row'>
             {cells}

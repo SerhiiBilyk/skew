@@ -1,0 +1,27 @@
+.wrapper{
+  border:1px solid red;
+  //height:800px;
+  padding:50px 0;
+  background:url('./img/about_bg.jpg') 0px 0px / cover no-repeat
+}
+
+  .container {
+    width: 25%;
+    float: left;
+    border:15px solid transparent;
+  }
+
+  .name, .position,.description{
+    color:white;
+    text-align:center;
+  }
+  @include media('zerro','md-phone'){
+    .container{
+      width:100%;
+    }
+  }
+  @include media('md-phone','sm-tablet'){
+    .container{
+      width:50%;
+    }
+  }

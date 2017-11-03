@@ -38,6 +38,8 @@
 }
 
 .scrollbar {
+  z-index:1;
+  transform:translateZ(0);
 
   max-height: calc(100vh - 70px);
   scrollbar-base-color: #ff8353;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './diagram.scss';
-import Title from '../global/Title/Title.jsx';
+import Title from '../global/Title/title.jsx';
 import Wrapper from '../global/Wrapper/wrapper.jsx';
 
 const percentage = [66, 82, 41];
@@ -33,13 +33,31 @@ var CircleDiagramsConfig = [
 class Diagram extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      animation: ['item','item','item']
+    }
+        this.handlePageYOffset = this.handlePageYOffset.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.handlePageYOffset,  true)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handlePageYOffset,true);
+  }
+  handlePageYOffset(){
+     if (window.pageYOffset + window.innerHeight / 2 >= this.circles.parentElement.offsetTop) {
+        this.setState({
+          animation: ['item-1','item-2','item-3']
+        })
+        window.removeEventListener('scroll', this.handlePageYOffset,true);
+    }
   }
   render() {
-    var circles = CircleDiagramsConfig.map(function(elem, index) {
+    var circles = CircleDiagramsConfig.map((elem, index)=> {
       return (
-        <div key={index} styleName='circle' >
+        <div key={index} styleName='circle'>
           <div styleName='container' per={`${elem.percentage}%`}>
-            <div styleName={`pie item-${index + 1}`}></div>
+            <div styleName={`pie ${this.state.animation[index]}`}></div>
           </div>
           <div>
             <p styleName='name'>{elem.name}</p>
@@ -49,12 +67,13 @@ class Diagram extends React.Component {
       )
     })
     return (
-      <Wrapper>
-
-        <div styleName='diagram'>
-          <Title theme='dark' {...TitleConfig}/> {circles}
-        </div>
-      </Wrapper>
+      <div id='circles'>
+        <Wrapper>
+          <div styleName='diagram' ref={circles => this.circles = circles}>
+            <Title theme='dark' {...TitleConfig}/> {circles}
+          </div>
+        </Wrapper>
+      </div>
     )
   }
 }

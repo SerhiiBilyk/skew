@@ -12,6 +12,13 @@ function root(nodeID) {
   return element;
 
 };
+/*
+var body=document.body;
+console.log('body',body)
+window.addEventListener('scroll',function(){
+  console.log('scroll body')
+})
+*/
 var element = root('root');
 class App extends React.Component {
   constructor(props) {

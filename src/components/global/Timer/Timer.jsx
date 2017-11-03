@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 /**
  * TODO
  *  -- var offsetTop -- write recursive funtion for this ugly line!
+ *  -- to many JS event listeners, performance issues
  */
 
 class Timer extends React.Component {
@@ -16,14 +17,21 @@ class Timer extends React.Component {
     this.handlePageYOffset = this.handlePageYOffset.bind(this);
   }
   componentDidMount() {
-    window.addEventListener('scroll', this.handlePageYOffset,  true)
+    console.log('did mount')
+    window.addEventListener('scroll', this.handlePageYOffset, true)
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handlePageYOffset,true);
+    window.removeEventListener('scroll', this.handlePageYOffset, true);
   }
   handlePageYOffset() {
+    console.log('scroll')
+    var findParentId = (element, id, parent = element.parentElement) => parent.id === id
+      ? parent.parentElement.offsetTop
+      : findParentId(parent, id);
 
-    var offsetTop = this.timerElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.offsetTop;
+    //var offsetTop = this.timerElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.offsetTop;
+    var offsetTop = findParentId(this.timerElement, 'results');
+    console.log('ofsettop',offsetTop)
     /**
  * if timer appears in visible zone
  * set START flag to true
@@ -36,7 +44,7 @@ class Timer extends React.Component {
       this.setState({
         start: true
       }, () => this.timerID = setInterval(() => this.step(), 0))
-      window.removeEventListener('scroll', this.handlePageYOffset,true);
+      window.removeEventListener('scroll', this.handlePageYOffset, true);
     }
   }
   componentWillUnmount() {
@@ -53,8 +61,13 @@ class Timer extends React.Component {
       clearInterval(this.timerID)
     }
   }
+  componentWillUpdate(nextProps, nextState) {
+
+  }
   render() {
     console.log('render Timer')
+
+    //  window.removeEventListener('scroll', this.handlePageYOffset,true);
     return (
       <span ref={timerElement => this.timerElement = timerElement}>
         {this.state.timer}

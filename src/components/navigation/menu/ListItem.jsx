@@ -22,7 +22,7 @@ class ListItem extends React.PureComponent {
   1.1. is the initial state(reset)
    */
   componentWillUnmount(){
-    console.log('Unmount')
+
   }
   componentWillReceiveProps(nextProps) {
     /*
