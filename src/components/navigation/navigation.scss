@@ -1,5 +1,5 @@
 .navigation {
-  border: 2px solid red;
+  //border: 2px solid red;
   position: absolute;
   width: 100%;
   z-index: 15;
@@ -29,7 +29,7 @@
   width: 60%;
   float: left;
   font-size: 0;
-  border: 2px solid white;
+  //border: 2px solid white;
   color: white;
   @include linkReset {
     color: white;

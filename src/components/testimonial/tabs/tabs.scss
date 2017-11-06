@@ -1,0 +1,91 @@
+.tabs {
+  @include clearfix;
+  border: 1px solid red;
+}
+
+.tech {
+  width: 15%;
+  display: inline-block;
+  float: left;
+  border: 1px solid black;
+}
+
+.type {
+  text-align: right;
+  position: relative;
+
+  button {
+    background-color: transparent;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 15px;
+    border: 2px #e3e3e3 solid;
+    position: relative;
+    right: -2px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.active {
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    width: 10px;
+    border-right: 2px solid white;
+    top: 0;
+    right: -2px;
+  }
+}
+
+.none {
+  width: auto;
+}
+@keyframes anim {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.description {
+  width: 55%;
+  display: inline-block;
+  float: left;
+  border-left: 2px solid #e3e3e3;
+  padding-left: 15px;
+  font-size: 13px;
+  line-height: 22px;
+  border: 1px solid black;
+}
+.customers{
+width:30%;
+float:left;
+position:relative;
+}
+.content{
+  padding-left:90px;
+}
+.icon{
+  display:inline-block;
+  position:absolute;
+}
+
+.visible {
+  display: block;
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.hide {
+  display: none;
+}

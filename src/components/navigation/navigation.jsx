@@ -34,11 +34,11 @@ class Navigation extends React.PureComponent {
   componentDidMount() {
 
     window.addEventListener('resize', this.handleResize,{passive:true})
-    //window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
+    window.addEventListener('scroll', this.handlePageYOffset,{passive:true})
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
-  //  window.removeEventListener('scroll', this.handlePageYOffset,true)
+   window.removeEventListener('scroll', this.handlePageYOffset,true)
 
   }
   componentWillMount(){

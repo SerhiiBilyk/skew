@@ -24,14 +24,21 @@ class Timer extends React.Component {
     window.removeEventListener('scroll', this.handlePageYOffset, true);
   }
   handlePageYOffset() {
-    console.log('scroll')
-    var findParentId = (element, id, parent = element.parentElement) => parent.id === id
-      ? parent.parentElement.offsetTop
-      : findParentId(parent, id);
+    /**
+     * @param  {[DOM node]} element                        [description]
+     * @param  {[string]} id                               [description]
+     * @param  {[DOM node]} [parent=element.parentElement] [description]
+     * @return {[Integer]}                                 [description]
+     */
+    var findParentId = (element, id, parent = element.parentElement) =>
+    parent.id === id
+       ? parent.parentElement.offsetTop
+       : findParentId(parent, id);
+
+
 
     //var offsetTop = this.timerElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.offsetTop;
-    var offsetTop = findParentId(this.timerElement, 'results');
-    console.log('ofsettop',offsetTop)
+    var offsetTop = findParentId(this.timerElement, this.props.container);
     /**
  * if timer appears in visible zone
  * set START flag to true
@@ -65,8 +72,6 @@ class Timer extends React.Component {
 
   }
   render() {
-    console.log('render Timer')
-
     //  window.removeEventListener('scroll', this.handlePageYOffset,true);
     return (
       <span ref={timerElement => this.timerElement = timerElement}>
@@ -77,6 +82,7 @@ class Timer extends React.Component {
 }
 Timer.propTypes = {
   max: PropTypes.number.isRequired,
-  step: PropTypes.number.isRequired
+  step: PropTypes.number.isRequired,
+  container: PropTypes.string.isRequired,
 }
 export default Timer;

@@ -8,6 +8,7 @@ import Themes from '../../components/themes/themes.jsx';
 import WeAre from '../../components/weare/weare.jsx';
 import SkewSection from '../../components/global/SkewSection/SkewSection.jsx';
 import Skew from '../../components/global/Skew/skew.jsx';
+import Testimonial from '../../components/testimonial/testimonial.jsx';
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -28,6 +29,9 @@ export default class HomePage extends React.Component {
         </SkewSection>
         <SkewSection>
           <WeAre/>
+        </SkewSection>
+        <SkewSection>
+          <Testimonial/>
         </SkewSection>
       </div>
     )

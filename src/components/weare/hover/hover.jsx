@@ -4,7 +4,7 @@ import styles from './hover.scss';
 import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
 
-class Hover extends React.Component {
+class Hover extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -29,15 +29,7 @@ class Hover extends React.Component {
     )
   }
 }
-export default CSSModules(Hover, styles, {allowMultiple: true})
-{/*
-    <div  styleName={`cell`}>
-      <div styleName='mask'></div>
-      <div styleName='child'>
-        <span className='fa fa-eye'></span>
-        <span className='fa fa-heart'></span>
-        <span className='fa fa-heart-o'></span>
-      </div>
-    </div>
-    */
+Hover.propTypes = {
+  icons: PropTypes.array.isRequired
 }
+export default CSSModules(Hover, styles, {allowMultiple: true})

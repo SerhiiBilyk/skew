@@ -5,7 +5,8 @@ import styles from './results.scss';
 import Icon from '../iconbox/Icon.jsx';
 import Wrapper from '../global/Wrapper/wrapper.jsx';
 import Button from '../global/Button/button.jsx';
-import Timer from '../global/Timer/timer.jsx';
+import Timer from '../global/Timer/Timer.jsx';
+import IconTimer from './IconTimer/IconTimer.jsx';
 
 var config = [
   {
@@ -26,33 +27,17 @@ var config = [
   }
 ]
 
+
 class Results extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    var cells = config.map(function(elem, i) {
-      return (
-        <div styleName='cell' key={i}>
-          <div styleName='icon'>
-            <Icon icon={elem.icon} theme='white' size='middle'/>
-          </div>
-          <div styleName='content'>
-            <p styleName='timer'>
-              <Timer max={elem.max} step={elem.step}/>
-            </p>
-            <p styleName='header'>
-              {elem.header}
-            </p>
-          </div>
-        </div>
-      )
-    })
     return (
       <div id='results' styleName='results'>
         <Wrapper>
           <div styleName='row'>
-            {cells}
+          <IconTimer config={config}/>
           </div>
           <div styleName='row'>
             <p styleName='text'>
