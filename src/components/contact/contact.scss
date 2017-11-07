@@ -1,0 +1,15 @@
+.contact{
+  border:1px solid black;
+  height:500px;
+  @include clearfix;
+}
+.message{
+  float:left;
+  width:65%;
+  border:1px solid black;
+}
+.info{
+  float:left;
+  width:25%;
+  border:1px solid black;
+}

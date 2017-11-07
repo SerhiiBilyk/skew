@@ -11,7 +11,7 @@ import Skew from '../../components/global/Skew/skew.jsx';
 import Testimonial from '../../components/testimonial/testimonial.jsx';
 import Gallery from '../../components/gallery/gallery.jsx';
 import Blog from '../../components/blog/blog.jsx';
-console.log('blog',Blog)
+import Contact from '../../components/contact/contact.jsx';
 import Separator from '../../components/separator/separator.jsx';
 
 var separators = [
@@ -23,6 +23,10 @@ var separators = [
     theme: 'white',
     title: 'From Our Blog',
     sub: 'Offering feature rich, professional product.'
+  }, {
+    theme: 'white',
+    title: 'Got A Question? We’re Here To Help!',
+    sub: 'We care about our clients and can make their life easier.'
   }
 ]
 
@@ -56,6 +60,10 @@ export default class HomePage extends React.Component {
         <Separator config={separators[1]} id={2}/>
         <SkewSection>
           <Blog/>
+        </SkewSection>
+        <Separator config={separators[2]} id={3}/>
+        <SkewSection>
+          <Contact/>
         </SkewSection>
 
       </div>
