@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Wrapper from '../global/Wrapper/wrapper.jsx';
 import Title from '../global/Title/title.jsx';
 import Hover from './hover/hover.jsx';
+import {imageGenerator} from '../global/imageGenerator.js';
 
 var HoverConfig = [
   {
@@ -43,6 +44,10 @@ var HoverConfig = [
   }
 ]
 
+var context= require.context('./img', false, /[0-9]+(.jpg)$/);
+var image = imageGenerator(context,HoverConfig.length);
+
+
 class WeAre extends React.Component {
   constructor(props) {
     super(props);
@@ -52,6 +57,7 @@ class WeAre extends React.Component {
       return (
         <div styleName='container' key={index} >
           <Hover
+            image={image[index]}
             index={index}
             icons={elem.icons}
             top={elem.top}/>

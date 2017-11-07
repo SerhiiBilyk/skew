@@ -17,10 +17,11 @@ class Timer extends React.Component {
     this.handlePageYOffset = this.handlePageYOffset.bind(this);
   }
   componentDidMount() {
-    console.log('did mount')
+    console.log('timer did mount')
     window.addEventListener('scroll', this.handlePageYOffset, true)
   }
   componentWillUnmount() {
+    console.log('timer unmount')
     window.removeEventListener('scroll', this.handlePageYOffset, true);
   }
   handlePageYOffset() {
@@ -30,12 +31,9 @@ class Timer extends React.Component {
      * @param  {[DOM node]} [parent=element.parentElement] [description]
      * @return {[Integer]}                                 [description]
      */
-    var findParentId = (element, id, parent = element.parentElement) =>
-    parent.id === id
-       ? parent.parentElement.offsetTop
-       : findParentId(parent, id);
-
-
+    var findParentId = (element, id, parent = element.parentElement) => parent.id === id
+      ? parent.parentElement.offsetTop
+      : findParentId(parent, id);
 
     //var offsetTop = this.timerElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.offsetTop;
     var offsetTop = findParentId(this.timerElement, this.props.container);
@@ -55,6 +53,8 @@ class Timer extends React.Component {
     }
   }
   componentWillUnmount() {
+    console.log('timer unmount')
+    window.removeEventListener('scroll', this.handlePageYOffset, true);
     clearInterval(this.timerID)
   }
   step() {
@@ -68,9 +68,6 @@ class Timer extends React.Component {
       clearInterval(this.timerID)
     }
   }
-  componentWillUpdate(nextProps, nextState) {
-
-  }
   render() {
     //  window.removeEventListener('scroll', this.handlePageYOffset,true);
     return (
@@ -83,6 +80,6 @@ class Timer extends React.Component {
 Timer.propTypes = {
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  container: PropTypes.string.isRequired,
+  container: PropTypes.string.isRequired
 }
 export default Timer;

@@ -26,11 +26,22 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 .items {
   @include clearfix;
   &.pc {
+    ul > li.container{
+      border:1px solid red;
+      position:relative;
+      &::after{
+        content:'<';
+        position:absolute;
+        left:0;
+        color:black;
+
+      }
+    }
     .container {
       position: relative;
 
       &:hover {
-        outline: 2px solid purple;
+        background-color:rgba(100,200,34,0.5);
 
         & > .sub {
           display: block;

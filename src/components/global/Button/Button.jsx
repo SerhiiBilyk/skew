@@ -17,7 +17,7 @@ class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
-  theme: PropTypes.string.isRequired,
+  theme: PropTypes.oneOf(['empty','filled']),
   text: PropTypes.string.isRequired
 }
 export default CSSModules(Button, styles, {allowMultiple: true});

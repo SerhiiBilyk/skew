@@ -20,7 +20,7 @@ class Title extends React.PureComponent {
   }
 }
 Title.propTypes={
-theme:PropTypes.string.isRequired,
+theme:PropTypes.oneOf(['white','dark']),
 title:PropTypes.string.isRequired
 }
 export default CSSModules(Title, styles, {allowMultiple: true});

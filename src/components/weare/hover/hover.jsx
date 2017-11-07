@@ -3,18 +3,31 @@ import ReactDOM from 'react-dom';
 import styles from './hover.scss';
 import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
+import Link from '../../global/Link/Link.jsx';
+
+
 
 class Hover extends React.PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
+    console.log(typeof this.props.image)
     return (
-      <div styleName={`cell item-${this.props.index + 1}`}>
+      <div styleName={`cell `}>
+        <img styleName='img' src={this.props.image} />
         {
-          this.props.top &&
+          (this.props.top && !this.props.link) &&
           <div styleName='top'>
-            <span  className={`fa fa-${this.props.top}`}></span>
+            <span  className={`fa fa-${this.props.top} fa-2x`}></span>
+          </div>
+        }
+        {
+          this.props.link &&
+          <div styleName='top'>
+            <Link to={this.props.link}>
+              <span  className={`fa fa-${this.props.top} fa-2x`}></span>
+            </Link>
           </div>
         }
         <div styleName='mask'></div>
@@ -30,6 +43,10 @@ class Hover extends React.PureComponent {
   }
 }
 Hover.propTypes = {
-  icons: PropTypes.array.isRequired
+  icons: PropTypes.array.isRequired,
+  image:PropTypes.string.isRequired
 }
 export default CSSModules(Hover, styles, {allowMultiple: true})
+/*
+  <div styleName={`cell item-${this.props.index + 1}`}>
+ */

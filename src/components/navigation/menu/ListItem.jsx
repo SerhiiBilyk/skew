@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
-import Link from '../../global/link/link.jsx';
+import Link from '../../global/Link/Link.jsx';
 import Arrow from './Arrow.jsx';
 
 
@@ -50,7 +50,8 @@ class ListItem extends React.PureComponent {
     return (
       <li  styleName={css} deep={deep} state={this.state.show} onClick={(e) => this.increment(e)}>
         {fontAwesome}
-        <Link content={name} to='/home'/>
+
+        <Link to={name==='Home'?'/':'/'+name}>{name}</Link>
         {content}
       </li>
     )

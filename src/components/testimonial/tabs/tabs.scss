@@ -1,13 +1,17 @@
 .tabs {
+  border-top: 2px #e3e3e3 solid;
   @include clearfix;
-  border: 1px solid red;
+  padding-top:40px;
+  margin-top:25px;
+
+
 }
 
 .tech {
   width: 15%;
   display: inline-block;
   float: left;
-  border: 1px solid black;
+
 }
 
 .type {
@@ -23,6 +27,12 @@
     border: 2px #e3e3e3 solid;
     position: relative;
     right: -2px;
+    width:inherit;
+    transition:color 1s ease;
+    &:hover{
+          color:#2f2f2f;
+    }
+
 
     &:focus {
       outline: none;
@@ -45,6 +55,7 @@
 
 .none {
   width: auto;
+  color:#999999;
 }
 @keyframes anim {
   from {
@@ -64,20 +75,9 @@
   padding-left: 15px;
   font-size: 13px;
   line-height: 22px;
-  border: 1px solid black;
+
 }
-.customers{
-width:30%;
-float:left;
-position:relative;
-}
-.content{
-  padding-left:90px;
-}
-.icon{
-  display:inline-block;
-  position:absolute;
-}
+
 
 .visible {
   display: block;
@@ -88,4 +88,20 @@ position:relative;
 
 .hide {
   display: none;
+}
+@include media('zerro','sm-tablet'){
+  .tech,.type,.description{
+    width:100%;
+  }
+  .description{
+    padding:15px 0 0 0;
+    border:none;
+
+  }
+  .active{
+    color:#2f2f2f;
+    &::after{
+      display:none;
+    }
+  }
 }

@@ -34,7 +34,7 @@ $breakpoints:(
   padding:15px 0;
 }
 @mixin linkReset {
-  a {
+  a {  
     &:active,
     &:hover,
     &:link,

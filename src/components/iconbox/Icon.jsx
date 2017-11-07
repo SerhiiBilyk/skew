@@ -21,8 +21,8 @@ class Icon extends React.PureComponent{
 }
 
 Icon.propTypes = {
-  theme: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  theme: PropTypes.oneOf(['black','white']),
+  size: PropTypes.oneOf(['big','middle']),
   icon: PropTypes.string.isRequired
 }
 export default CSSModules(Icon, styles, {allowMultiple: true})

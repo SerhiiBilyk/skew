@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import styles from './menuItems.scss';
 import {bar} from '../bar.jsx';
 import css from '../../global/cssmodules.js';
-import Link from '../../global/link/link.jsx';
+import Link from '../../global/Link/Link.jsx';
 import ListContainer from './ListContainer.jsx';
 import ListItem from './ListItem.jsx';
 
@@ -61,6 +61,6 @@ class MenuItems extends React.PureComponent {
   }
 }
 MenuItems.propTypes={
-theme:PropTypes.string.isRequired
+theme:PropTypes.oneOf(['pc','mobile'])
 }
 export default CSSModules(MenuItems, styles, {allowMultiple: true});

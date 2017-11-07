@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import styles from './tabs.scss';
 import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
-import Icon from '../../iconbox/Icon.jsx';
-import Timer from '../../global/Timer/Timer.jsx';
+import Customers from '../customers/customers.jsx';
 
 import {config} from './config.jsx';
+
+
 
 class Tabs extends React.PureComponent {
   constructor(props) {
@@ -16,7 +17,6 @@ class Tabs extends React.PureComponent {
     }
   }
   go(e, arg) {
-    console.log('go', e, arg)
     this.setState({current: arg})
   }
   render() {
@@ -44,15 +44,7 @@ class Tabs extends React.PureComponent {
         <div styleName='description'>
           {text}
         </div>
-        <div styleName='customers'>
-          <div styleName='icon'>
-            <Icon icon='group' theme='black' size='middle'/>
-          </div>
-          <div styleName='content'>
-            <Timer max={12400} step={100} container='testimonial'/>
-            <p>Hello</p>
-          </div>
-        </div>
+        <Customers/>
       </div>
     )
   }

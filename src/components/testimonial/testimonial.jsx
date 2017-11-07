@@ -11,13 +11,6 @@ import Tabs from './tabs/tabs.jsx';
 import {config} from './config.jsx';
 
 
-
-
-
-
-
-
-
 class Testimonial extends React.PureComponent {
   constructor(props) {
     super(props);
