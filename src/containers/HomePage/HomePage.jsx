@@ -13,6 +13,10 @@ import Gallery from '../../components/gallery/gallery.jsx';
 import Blog from '../../components/blog/blog.jsx';
 import Contact from '../../components/contact/contact.jsx';
 import Separator from '../../components/separator/separator.jsx';
+import GoogleMap from '../../components/contact/GoogleMap/GoogleMap.jsx';
+import Partners from '../../components/partners/partners.jsx';
+import Footer from '../../components/footer/footer.jsx';
+import Copyright from '../../components/footer/copyright.jsx'
 
 var separators = [
   {
@@ -62,10 +66,19 @@ export default class HomePage extends React.Component {
           <Blog/>
         </SkewSection>
         <Separator config={separators[2]} id={3}/>
-        <SkewSection>
+        <SkewSection zIndex={10}>
           <Contact/>
         </SkewSection>
-
+        <SkewSection >
+          <GoogleMap/>
+        </SkewSection>
+        <SkewSection >
+          <Partners/>
+        </SkewSection>
+        <SkewSection>
+          <Footer extended title='Subscribe for Our Newsletter!'/>
+        </SkewSection>
+        <Copyright/>
       </div>
     )
   }

@@ -22,7 +22,7 @@ class Icon extends React.PureComponent{
 
 Icon.propTypes = {
   theme: PropTypes.oneOf(['black','white']),
-  size: PropTypes.oneOf(['big','middle']),
+  size: PropTypes.oneOf(['big','middle','small']),
   icon: PropTypes.string.isRequired
 }
 export default CSSModules(Icon, styles, {allowMultiple: true})

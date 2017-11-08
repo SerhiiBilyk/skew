@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './style.scss';
 import Header from './components/header/header.jsx';
 import Main from './routes.jsx';
+
 import {HashRouter as Router,Route,Link,Switch} from 'react-router-dom';
 
 function root(nodeID) {
   const element = document.createElement('div');
   element.id = nodeID;
   document.body.appendChild(element);
+//  element.style.overflowX='hidden';
   return element;
 
 };
