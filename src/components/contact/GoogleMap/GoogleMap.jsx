@@ -7,10 +7,17 @@ import GoogleMapReact from 'google-map-react';
 //'https://maps.googleapis.com/maps/api/js?key=AIzaSyBPxvLFi1p2GpgJ2BsZ_KVx3qURUHG40ZA&callback=initMap';
 
 const AnyReactComponent = ({text}) => <div>{text}</div>;
+
+
+
+
+
+
 class GoogleMap extends React.PureComponent {
   constructor(props) {
     super(props);
   }
+
   render() {
     function createOptions() {
       return {
@@ -159,8 +166,10 @@ class GoogleMap extends React.PureComponent {
         ]
       }
     }
+
+
     return (
-      <div id='map' styleName='map'>
+      <div id='map' styleName='map' ref={(map)=>this.map=map}>
         <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom} style={{
           height: '500px'
         }}

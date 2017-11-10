@@ -15,7 +15,7 @@ class Hover extends React.PureComponent {
     console.log(typeof this.props.image)
     return (
       <div styleName={`cell `}>
-        <img styleName='img' src={this.props.image} />
+        <img data-lazy styleName='img' src={this.props.image} />
         {
           (this.props.top && !this.props.link) &&
           <div styleName='top'>

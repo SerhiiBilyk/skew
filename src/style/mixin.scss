@@ -34,7 +34,7 @@ $breakpoints:(
   padding:15px 0;
 }
 @mixin linkReset {
-  a {  
+  a {
     &:active,
     &:hover,
     &:link,
@@ -46,7 +46,6 @@ $breakpoints:(
 
 
 @mixin coordinates ($rows,$cells,$height,$quantity){
-  @debug 'cells' $cells;
   $left :('0');
   $koef:100 / $cells;
   @for $i from 1 through ($cells - 1){
@@ -83,14 +82,12 @@ $top:0;
 
 @mixin circleDiagram($list) {
    @for $i from 1 through 3{
-    @debug 'i' $i;
     @keyframes before-#{$i} {
       to {
         transform: rotate(PercentToDegree(nth($list,$i)));
       }
     }
     @keyframes after-#{$i} {
-       @debug'check' nth($list,$i);
       @if nth($list,$i) > 50 {
         0% {
           opacity: 1;

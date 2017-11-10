@@ -1,4 +1,4 @@
-$nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
+$nested: '#666666','#666666','#666666','#666666','#666666' !global;
 
 
 @keyframes anim {
@@ -127,6 +127,7 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
     overflow: hidden;
     will-change: height;
     max-height: 0;
+    //padding-left:15px;
 
     &.show {
       display: block;
@@ -147,6 +148,12 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
       width: 100%;
       display: inline-block;
       text-align: left;
+      transition:all 1s ease;
+      padding-left:15px;
+      &:hover{
+        background-color:#555555;
+      }
+
     }
   }
 }
@@ -183,7 +190,7 @@ $nested: '#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D' !global;
 .item{
   @include linkReset{
     text-decoration: none;
-    color:black;
+    color:white;
   }
 }
 .container[deep] {

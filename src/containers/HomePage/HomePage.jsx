@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+
+
+
 import CSSModules from 'react-css-modules';
 import Results from '../../components/results/results.jsx';
 import Iconbox from '../../components/iconbox/iconbox.jsx';
@@ -16,7 +20,11 @@ import Separator from '../../components/separator/separator.jsx';
 import GoogleMap from '../../components/contact/GoogleMap/GoogleMap.jsx';
 import Partners from '../../components/partners/partners.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import Copyright from '../../components/footer/copyright.jsx'
+import Lazy from './lazy/lazy.jsx';
+import Copyright from '../../components/footer/copyright.jsx';
+
+
+
 
 var separators = [
   {
@@ -34,20 +42,28 @@ var separators = [
   }
 ]
 
+
+
 export default class HomePage extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <div>
+      <div id='lazy'>
+
+
         <SkewSection>
           <Iconbox/>
           <Themes/>
         </SkewSection>
+
+
+<Lazy>
         <SkewSection>
           <Results/>
         </SkewSection>
+
         <SkewSection>
           <Diagram/>
         </SkewSection>
@@ -70,7 +86,9 @@ export default class HomePage extends React.Component {
           <Contact/>
         </SkewSection>
         <SkewSection >
+
           <GoogleMap/>
+
         </SkewSection>
         <SkewSection >
           <Partners/>
@@ -78,6 +96,7 @@ export default class HomePage extends React.Component {
         <SkewSection>
           <Footer extended title='Subscribe for Our Newsletter!'/>
         </SkewSection>
+</Lazy>
         <Copyright/>
       </div>
     )

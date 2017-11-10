@@ -4,8 +4,10 @@ import Navigation from '../navigation/navigation.jsx';
 import styles from './slider.scss';
 import CSSModules from 'react-css-modules';
 import css from  '../global/cssmodules.js';
+import {imageGenerator} from '../global/imageGenerator.js';
 
-
+var context = require.context('./img', false, /[0-9]+(.jpg)$/);
+var images = imageGenerator(context, 3);
 
 var content = [
   {
@@ -55,6 +57,7 @@ export class Button extends React.PureComponent{
 function Slide(props) {
   var {active, previous} = props;
   var fadeOut = previous ? 'fadeOut':'';
+  console.log('images',images)
   return (
     <li className={[
       styles.slide,
@@ -62,6 +65,9 @@ function Slide(props) {
       styles[fadeOut],
       styles['x-'+(props.index + 1/*because SASS loop start from 1*/)]
     ].join(' ')}>
+    <img data-lazy className={[
+      styles['img']
+    ].join(' ')} src={images[props.index]}/>
       <p>{props.content}</p>
     </li>
   )

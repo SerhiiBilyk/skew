@@ -40,7 +40,7 @@ class Themes extends React.Component {
       <Wrapper>
         <Title {...text}/>
         <div styleName='themes'>
-          {cells}
+       {cells}
         </div>
 
       </Wrapper>
