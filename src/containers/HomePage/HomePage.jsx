@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-
-
 import CSSModules from 'react-css-modules';
 import Results from '../../components/results/results.jsx';
 import Iconbox from '../../components/iconbox/iconbox.jsx';
@@ -23,9 +20,6 @@ import Footer from '../../components/footer/footer.jsx';
 import Lazy from './lazy/lazy.jsx';
 import Copyright from '../../components/footer/copyright.jsx';
 
-
-
-
 var separators = [
   {
     theme: 'white',
@@ -42,8 +36,6 @@ var separators = [
   }
 ]
 
-
-
 export default class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -52,51 +44,49 @@ export default class HomePage extends React.Component {
     return (
       <div id='lazy'>
 
-
-        <SkewSection>
+        <SkewSection zIndex={10}>
           <Iconbox/>
           <Themes/>
         </SkewSection>
 
+        <Lazy>
+          <SkewSection>
+            <Results/>
+          </SkewSection>
 
-<Lazy>
-        <SkewSection>
-          <Results/>
-        </SkewSection>
+          <SkewSection>
+            <Diagram/>
+          </SkewSection>
+          <SkewSection>
+            <WeAre/>
+          </SkewSection>
+          <SkewSection>
+            <Testimonial/>
+          </SkewSection>
+          <Separator config={separators[0]} id={1}/>
+          <SkewSection>
+            <Gallery/>
+          </SkewSection>
+          <Separator config={separators[1]} id={2}/>
+          <SkewSection>
+            <Blog/>
+          </SkewSection>
+          <Separator config={separators[2]} id={3}/>
+          <SkewSection zIndex={10}>
+            <Contact/>
+          </SkewSection>
+          <SkewSection >
 
-        <SkewSection>
-          <Diagram/>
-        </SkewSection>
-        <SkewSection>
-          <WeAre/>
-        </SkewSection>
-        <SkewSection>
-          <Testimonial/>
-        </SkewSection>
-        <Separator config={separators[0]} id={1}/>
-        <SkewSection>
-          <Gallery/>
-        </SkewSection>
-        <Separator config={separators[1]} id={2}/>
-        <SkewSection>
-          <Blog/>
-        </SkewSection>
-        <Separator config={separators[2]} id={3}/>
-        <SkewSection zIndex={10}>
-          <Contact/>
-        </SkewSection>
-        <SkewSection >
+            <GoogleMap/>
 
-          <GoogleMap/>
-
-        </SkewSection>
-        <SkewSection >
-          <Partners/>
-        </SkewSection>
-        <SkewSection>
-          <Footer extended title='Subscribe for Our Newsletter!'/>
-        </SkewSection>
-</Lazy>
+          </SkewSection>
+          <SkewSection >
+            <Partners/>
+          </SkewSection>
+          <SkewSection>
+            <Footer extended title='Subscribe for Our Newsletter!'/>
+          </SkewSection>
+        </Lazy>
         <Copyright/>
       </div>
     )

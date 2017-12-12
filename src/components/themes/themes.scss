@@ -7,8 +7,10 @@ $height:200px ;
   position: relative;
   background-color: white;
   height:$height * 2;
-  margin-bottom:40px;
+  margin-bottom:6vw;
   z-index:1;
+  overflow:hidden;
+
 
 }
 @keyframes anim {

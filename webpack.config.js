@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var APP_DIR = path.resolve(__dirname, './src');
-var BUILD_DIR = path.resolve(__dirname, './dist');
+var BUILD_DIR = path.resolve(__dirname, './docs');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -101,8 +101,8 @@ var commonConfig = {
    cssProcessorOptions: { discardComments: { removeAll: true } },
    canPrint: true
  }),
-*/
 
+*/
    new ExtractTextPlugin("style.css")
 
   ]
@@ -116,7 +116,7 @@ const developmentConfig = () => {
       stats: 'errors-only',
       host: process.env.HOST, // Defaults to `localhost`
       port: process.env.PORT, // Defaults to 8080
-      contentBase: path.join(__dirname, './dist'),
+      contentBase: path.join(__dirname, './docs'),
       hot: true
     },
     plugins: [new webpack.HotModuleReplacementPlugin()]

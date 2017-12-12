@@ -1,4 +1,4 @@
-$nested: '#666666','#666666','#666666','#666666','#666666' !global;
+$nested: 'rgba(255,255,255,0)','	rgba(92,16,16,0.8)','rgba(111,0,0)','	rgba(92,16,16,0.8)','rgba(111,0,0)' !global;
 
 
 @keyframes anim {
@@ -24,16 +24,17 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
 }
 
 .items {
+  padding-top:50px;
   @include clearfix;
   &.pc {
     ul > li.container{
-      border:1px solid red;
+
       position:relative;
       &::after{
         content:'<';
         position:absolute;
         left:0;
-        color:black;
+        color:red;
 
       }
     }
@@ -41,7 +42,7 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
       position: relative;
 
       &:hover {
-        background-color:rgba(100,200,34,0.5);
+        background-color:unquote(nth($nested,2));
 
         & > .sub {
           display: block;
@@ -61,17 +62,19 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
     first nested menu have special style
      */
           &[deep='1'] {
-            background-color:unquote(nth($nested,1));
+            background-color:rgba(92,16,16,.9);;
+            color:white;
             position: absolute;
             top: 100%;
             @include clearfix;
+
 
             &:after {
               content: '';
               position: absolute;
               left: 50%;
               top: -10px;
-              transform: translateX(-5px);
+              transform: translateX(-7px);
               width: 0;
               height: 0;
               border-left: 10px solid transparent;
@@ -93,7 +96,6 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
               &:after {
                 content: '';
                 width: 10px;
-                border: 1px solid red;
                 right: -10px;
                 height: 100%;
                 top: 0;
@@ -106,6 +108,12 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
             display: block;
             float: none;
             width: 100%;
+
+  @include linkReset{
+    text-decoration: none;
+    color:white;
+
+}
           }
         }
       }
@@ -135,6 +143,11 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
       animation-delay: 0.1s;
       animation-duration: 1s;
       animation-fill-mode: forwards;
+      .container{
+        border-left:5px solid 	white;
+
+      }
+
     }
 
     &.hide {
@@ -151,7 +164,7 @@ $nested: '#666666','#666666','#666666','#666666','#666666' !global;
       transition:all 1s ease;
       padding-left:15px;
       &:hover{
-        background-color:#555555;
+        //background-color:red;
       }
 
     }

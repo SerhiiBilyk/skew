@@ -43609,7 +43609,7 @@ var HomePage = function (_React$Component) {
         { id: 'lazy' },
         _react2.default.createElement(
           _SkewSection2.default,
-          null,
+          { zIndex: 10 },
           _react2.default.createElement(_iconbox2.default, null),
           _react2.default.createElement(_themes2.default, null)
         ),

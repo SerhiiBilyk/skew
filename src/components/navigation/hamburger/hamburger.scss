@@ -8,6 +8,7 @@
   float: left;
 }
 .hamburger {
+  z-index:1;
   width: 30px;
   position: relative;
   list-style-type: none;
@@ -39,6 +40,9 @@
   }
 
   &.expanded {
+    position:fixed;
+    top:0;
+    z-index:100;
     & li:nth-child(1) {
       perspective: 600px;
       transform: rotateZ(45deg);

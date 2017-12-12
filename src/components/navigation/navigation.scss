@@ -14,6 +14,10 @@
     position: fixed;
     background-color: black;
     top: 0;
+    left:0;
+    ul[deep='0']{
+        padding-top:0;
+    }
   }
 }
 
@@ -40,10 +44,15 @@
 .scrollbar {
   z-index:1;
   //transform:translateZ(0);
-  position:absolute;
+  position:fixed;
   width:100%;
+  top:0;
+  background-color:rgba(0,0,0,.9);
+  height:0;
+  transition:all 1s ease;
 
-  max-height: calc(100vh - 70px);
+  //max-height: calc(100vh - 70px);
+
   scrollbar-base-color: #777777;
   scrollbar-arrow-color: #777777;
   scrollbar-track-color: #777777;
@@ -54,6 +63,7 @@
   }
   &.scroll{
       overflow-y: scroll;
+      height:100vh;
   }
 
   &::-webkit-scrollbar {
